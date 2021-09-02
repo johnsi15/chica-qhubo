@@ -1,65 +1,85 @@
-import Head from 'next/head'
+import Layout from '../components/Layout'
 import styles from '../styles/Home.module.css'
 
-export default function Home() {
+import dbConnect from '../lib/dbConnect'
+import Girl from '../models/Girl'
+
+export default function Home({ girls }) {
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+    <>
+      <Layout>
+        <div className={styles.background}>
+          <div className={styles.container}>
+            <h2>Regístrate aquí</h2>
+            <form action='' enctype='multipart/form-data'>
+              <div className='field'>
+                <label htmlFor='names'>Nombres y Apellidos</label>
+                <input type='text' name='names' id='names' />
+              </div>
+              <div className='field'>
+                <label htmlFor='birthday'>Fecha de Nacimiento*</label>
+                <input type='date' name='birthday' id='birthday' />
+              </div>
+              <div className='field'>
+                <label htmlFor='email'>Correo Electrónico</label>
+                <input type='email' name='email' id='email' />
+              </div>
+              <div className='field'>
+                <label htmlFor='phone'>Celular</label>
+                <input type='text' name='phone' id='phone' />
+              </div>
+              <div className='field'>
+                <label htmlFor='socialNetwork'>
+                  Redes sociales <span>(Mínimos 5k seguidores)</span>
+                </label>
+                <input type='text' name='socialNetwork' id='socialNetwork' />
+              </div>
+              <div className='field'>
+                <label htmlFor='images'>Subir Foto</label>
+                <input
+                  type='file'
+                  name='images'
+                  id='images'
+                  multiple
+                  accept='.jpg, .jpeg, .png'
+                />
+              </div>
+              <div className='field'>
+                <label htmlFor='terminos'>
+                  Acepto los Términos y condiciones y el tratamiento de mis
+                  datos conforme a la Política de Tratamiento de datos de La
+                  Opinión.
+                </label>
+                <input type='check' name='terminos' id='terminos' required />
+              </div>
+              <div className='field'>
+                <button className='btn btn-submit'>Enviar</button>
+              </div>
+            </form>
+            <h3 className={styles.title}>Hello world</h3>
+            {girls.map((girl) => (
+              <p className={styles.girl} key={girl._id}>
+                {girl.name}
+              </p>
+            ))}
+          </div>
         </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
+      </Layout>
+    </>
   )
+}
+
+/* Retrieves pet(s) data from mongodb database */
+export async function getServerSideProps() {
+  await dbConnect()
+
+  /* find all the data in our database */
+  const result = await Girl.find({})
+  const girls = result.map((doc) => {
+    const girl = doc.toObject()
+    girl._id = girl._id.toString()
+    return girl
+  })
+
+  return { props: { girls } }
 }
