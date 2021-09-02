@@ -5,58 +5,79 @@ import dbConnect from '../lib/dbConnect'
 import Girl from '../models/Girl'
 
 export default function Home({ girls }) {
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    console.log('Submit')
+  }
   return (
     <>
       <Layout>
         <div className={styles.background}>
           <div className={styles.container}>
-            <h2>Regístrate aquí</h2>
-            <form action='' enctype='multipart/form-data'>
-              <div className='field'>
+            <h2 className={styles.title}>Regístrate aquí</h2>
+            <form
+              action=''
+              className={styles.form}
+              encType='multipart/form-data'
+              onSubmit={handleSubmit}
+            >
+              <div className={styles.field}>
                 <label htmlFor='names'>Nombres y Apellidos</label>
                 <input type='text' name='names' id='names' />
               </div>
-              <div className='field'>
-                <label htmlFor='birthday'>Fecha de Nacimiento*</label>
+              <div className={styles.field}>
+                <label htmlFor='birthday'>Fecha de Nacimiento</label>
                 <input type='date' name='birthday' id='birthday' />
               </div>
-              <div className='field'>
+              <div className={styles.field}>
                 <label htmlFor='email'>Correo Electrónico</label>
                 <input type='email' name='email' id='email' />
               </div>
-              <div className='field'>
+              <div className={styles.field}>
                 <label htmlFor='phone'>Celular</label>
                 <input type='text' name='phone' id='phone' />
               </div>
-              <div className='field'>
+              <div className={styles.field}>
                 <label htmlFor='socialNetwork'>
                   Redes sociales <span>(Mínimos 5k seguidores)</span>
                 </label>
                 <input type='text' name='socialNetwork' id='socialNetwork' />
               </div>
-              <div className='field'>
+              <div className={styles.field}>
                 <label htmlFor='images'>Subir Foto</label>
-                <input
-                  type='file'
-                  name='images'
-                  id='images'
-                  multiple
-                  accept='.jpg, .jpeg, .png'
-                />
+                <div className={styles.fileContainer}>
+                  <input
+                    type='file'
+                    name='images'
+                    id='images'
+                    multiple
+                    accept='.jpg, .jpeg, .png'
+                  />
+                </div>
               </div>
-              <div className='field'>
+              <div className={`${styles.field} ${styles.terminos}`}>
                 <label htmlFor='terminos'>
-                  Acepto los Términos y condiciones y el tratamiento de mis
-                  datos conforme a la Política de Tratamiento de datos de La
-                  Opinión.
+                  Acepto los{' '}
+                  <a
+                    href='https://www.laopinion.com.co/terminos-condiciones'
+                    target='_blank'
+                  >
+                    Términos y condiciones
+                  </a>{' '}
+                  y el tratamiento de mis datos conforme a la{' '}
+                  <a
+                    href='https://www.laopinion.com.co/politica-de-tratamiento-de-datos-personales'
+                    target='_blank'
+                  >
+                    Política de Tratamiento de datos de La Opinión.
+                  </a>
                 </label>
-                <input type='check' name='terminos' id='terminos' required />
+                <input type='checkbox' name='terminos' id='terminos' required />
               </div>
-              <div className='field'>
-                <button className='btn btn-submit'>Enviar</button>
+              <div className={styles.field}>
+                <button className={styles.btn}>Enviar</button>
               </div>
             </form>
-            <h3 className={styles.title}>Hello world</h3>
             {girls.map((girl) => (
               <p className={styles.girl} key={girl._id}>
                 {girl.name}
