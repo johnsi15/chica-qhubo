@@ -24,7 +24,7 @@ export default function Home({ girls }) {
             <RegistrationForm />
             {girls.map((girl) => (
               <p className={styles.girl} key={girl._id}>
-                {girl.name}
+                {girl.name || girl.names}
               </p>
             ))}
           </div>

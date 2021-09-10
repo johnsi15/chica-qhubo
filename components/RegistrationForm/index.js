@@ -14,7 +14,35 @@ export default function RegistrationForm() {
   const onSubmit = (data) => {
     console.log(data)
     console.log('Submit')
+    postData(data)
   }
+
+  const postData = async (data) => {
+    try {
+      console.log(data)
+      const res = await fetch('/api/girl', {
+        method: 'POST',
+        headers: { 'Content-type': 'application/json' },
+        body: JSON.stringify(data),
+      })
+
+      const dataRes = await res.json()
+      console.log(dataRes)
+      console.log(errors)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  /*
+    https://www.youtube.com/watch?v=XlAs-Lid-TA
+    https://github.com/satansdeer/react-hook-form-file-input/blob/master/src/App.js
+    https://www.youtube.com/watch?v=PEGUFi9Sx-U
+    https://github.com/satansdeer/rhf-file-upload
+    https://codesandbox.io/s/thyb0?file=/pages/index.js:209-214
+    https://react-hook-form.com/get-started
+    https://stackoverflow.com/questions/33531140/get-file-size-in-mb-or-kb/33531404
+  */
 
   useEffect(() => {
     // const filesArray = []
@@ -33,8 +61,8 @@ export default function RegistrationForm() {
     }
   }, [watch('images')])
 
-  console.log('this is file state ')
-  console.log(filesUploaded)
+  // console.log('this is file state ')
+  // console.log(filesUploaded)
   return (
     <>
       <form
@@ -44,31 +72,60 @@ export default function RegistrationForm() {
       >
         <div className={styles.field}>
           <label htmlFor='names'>Nombres y Apellidos</label>
-          <input type='text' name='names' id='names' />
+          <input
+            {...register('names', { required: true })}
+            type='text'
+            name='names'
+            id='names'
+          />
+          {errors.names && <span>This field is required</span>}
         </div>
         <div className={styles.field}>
           <label htmlFor='birthday'>Fecha de Nacimiento</label>
-          <input type='date' name='birthday' id='birthday' />
+          <input
+            {...register('birthday', { required: true })}
+            type='date'
+            name='birthday'
+            id='birthday'
+          />
+          {errors.birthday && <span>This field is required</span>}
         </div>
         <div className={styles.field}>
           <label htmlFor='email'>Correo Electrónico</label>
-          <input type='email' name='email' id='email' />
+          <input
+            {...register('email', { required: true })}
+            type='email'
+            name='email'
+            id='email'
+          />
+          {errors.email && <span>This field is required</span>}
         </div>
         <div className={styles.field}>
           <label htmlFor='phone'>Celular</label>
-          <input type='text' name='phone' id='phone' />
+          <input
+            {...register('phone', { required: true })}
+            type='text'
+            name='phone'
+            id='phone'
+          />
+          {errors.images && <span>This field is required</span>}
         </div>
         <div className={styles.field}>
-          <label htmlFor='socialNetwork'>
+          <label htmlFor='social_network'>
             Redes sociales <span>(Mínimos 5k seguidores)</span>
           </label>
-          <input type='text' name='socialNetwork' id='socialNetwork' />
+          <input
+            {...register('social_network', { required: false })}
+            type='text'
+            name='social_network'
+            id='social_network'
+          />
         </div>
         <div className={styles.field}>
           <label htmlFor='images'>Subir Foto</label>
           <div className={styles.fileContainer}>
             <input
-              {...register('images', { required: true })}
+              {...register('images', { required: false })}
               type='file'
               name='images'
               id='images'
@@ -95,7 +152,13 @@ export default function RegistrationForm() {
               Política de Tratamiento de datos de La Opinión.
             </a>
           </label>
-          <input type='checkbox' name='terminos' id='terminos' />
+          <input
+            {...register('terminos', { required: true })}
+            type='checkbox'
+            name='terminos'
+            id='terminos'
+          />
+          {errors.terminos && <span>This field is required</span>}
         </div>
         <div className={styles.field}>
           <button className={styles.btn}>Enviar</button>

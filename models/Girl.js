@@ -2,31 +2,37 @@ import mongoose from 'mongoose'
 
 /* GirlSchema will correspond to a collection in your MongoDB database. */
 const GirlSchema = new mongoose.Schema({
-  name: {
+  names: {
     type: String,
-    required: [true, 'Please provide a name for this girl.'],
-    maxlength: [40, 'Name cannot be more than 40 characters'],
+    required: [true, 'Por favor se necesita un nombre.'],
+    maxlength: [40, 'El nombre no puede tener mas de 40 caracteres.'],
   },
   birthday: {
     type: Date,
-    required: [true, 'Please provide a valid date'],
+    required: [true, 'Por favor ingrese una fecha.'],
   },
   email: {
     type: String,
-    match: [/^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/, 'Invalid email format'],
-    required: [true, 'Please enter Email Address'],
+    match: [
+      /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/,
+      'Formato invalido de correo electrónico',
+    ],
+    required: [true, 'Por favor ingrese un correo electrónico'],
     unique: true,
   },
   phone: {
     type: String,
-    required: true,
-    maxlength: [10, 'Phone cannot be more than 10 characters'],
+    required: [true, 'Por favor ingrese un número de teléfono.'],
+    maxlength: [
+      10,
+      'El número de teléfono no puede tener mas de 10 caracteres.',
+    ],
   },
   social_network: {
     type: String,
   },
-  image_url: {
-    required: [true, 'Please provide an image url for this pet.'],
+  images: {
+    required: [false, 'Por favor cargue una foto.'],
     type: Array,
   },
 })
