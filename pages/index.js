@@ -24,7 +24,7 @@ export default function Home({ girls }) {
             <RegistrationForm />
             {girls.map((girl) => (
               <p className={styles.girl} key={girl._id}>
-                {girl.name || girl.names}
+                {girl.names}
               </p>
             ))}
           </div>
@@ -46,5 +46,7 @@ export async function getServerSideProps() {
     return girl
   })
 
-  return { props: { girls } }
+  const data = JSON.parse(JSON.stringify(girls))
+
+  return { props: { girls: data } }
 }

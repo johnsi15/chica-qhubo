@@ -4,6 +4,8 @@ import { useForm } from 'react-hook-form'
 
 export default function RegistrationForm() {
   const [filesUploaded, setFilesUploaded] = useState([])
+  const [image, setImage] = useState([])
+
   const {
     register,
     handleSubmit,
@@ -14,24 +16,47 @@ export default function RegistrationForm() {
   const onSubmit = (data) => {
     console.log(data)
     console.log('Submit')
-    postData(data)
+    // postData(data, image)
   }
 
-  const postData = async (data) => {
+  const postData = async (data, images) => {
     try {
+      data = { ...data, images: [...filesUploaded] }
       console.log(data)
-      const res = await fetch('/api/girl', {
-        method: 'POST',
-        headers: { 'Content-type': 'application/json' },
-        body: JSON.stringify(data),
-      })
+      // console.log(filesUploaded)
+      console.log('images -> ')
+      console.log(images)
 
-      const dataRes = await res.json()
-      console.log(dataRes)
-      console.log(errors)
+      images.forEach((img) => {
+        uploadToServer(img)
+      })
+      // uploadToServer(images)
+
+      setFilesUploaded([])
+      setImage([])
+      // const res = await fetch('/api/girl', {
+      //   method: 'POST',
+      //   headers: { 'Content-type': 'application/json' },
+      //   body: JSON.stringify(data),
+      // })
+
+      // const dataRes = await res.json()
+      // console.log(dataRes)
+      // console.log(errors)
     } catch (error) {
       console.log(error)
     }
+  }
+
+  const uploadToServer = async (images) => {
+    const body = new FormData()
+    body.append('file', images)
+    const res = await fetch('/api/file', {
+      method: 'POST',
+      body,
+    })
+    console.log('res uploadToServer ')
+    console.log(res)
   }
 
   /*
@@ -44,25 +69,37 @@ export default function RegistrationForm() {
     https://stackoverflow.com/questions/33531140/get-file-size-in-mb-or-kb/33531404
   */
 
+  const imageNames = []
+  const imageFiles = []
+
+  if (watch('images')) {
+    console.log('watch images -> ')
+    const files = watch('images')
+    for (const property in files) {
+      if (typeof files[property] === 'object') {
+        let nameFile = files[property].name.replaceAll(' ', '-').trim()
+        // console.log(`${property}: ${nameFile}`)
+        imageNames.push(nameFile)
+        imageFiles.push(files[property])
+      }
+    }
+  }
+
   useEffect(() => {
-    // const filesArray = []
     console.log(watch('images'))
     if (watch('images').length > 0) {
-      // console.log('ok paso')
-      const files = watch('images')
-      for (const property in files) {
-        if (typeof files[property] === 'object') {
-          let nameFile = files[property].name
-          console.log(`${property}: ${nameFile}`)
-          setFilesUploaded([...filesUploaded, nameFile])
-          // filesArray.push(nameFile)
-        }
-      }
+      console.log('watch images -> ')
+      // const files = watch('images')
+      setImage([...image, ...imageNames])
+      setFilesUploaded([...filesUploaded, ...imageFiles])
     }
   }, [watch('images')])
 
-  // console.log('this is file state ')
-  // console.log(filesUploaded)
+  console.log('this is file state ')
+  console.log(filesUploaded)
+  console.log('this is image state ')
+  console.log(image)
+
   return (
     <>
       <form
@@ -73,7 +110,7 @@ export default function RegistrationForm() {
         <div className={styles.field}>
           <label htmlFor='names'>Nombres y Apellidos</label>
           <input
-            {...register('names', { required: true })}
+            {...register('names', { required: false })}
             type='text'
             name='names'
             id='names'
@@ -83,7 +120,7 @@ export default function RegistrationForm() {
         <div className={styles.field}>
           <label htmlFor='birthday'>Fecha de Nacimiento</label>
           <input
-            {...register('birthday', { required: true })}
+            {...register('birthday', { required: false })}
             type='date'
             name='birthday'
             id='birthday'
@@ -93,7 +130,7 @@ export default function RegistrationForm() {
         <div className={styles.field}>
           <label htmlFor='email'>Correo Electrónico</label>
           <input
-            {...register('email', { required: true })}
+            {...register('email', { required: false })}
             type='email'
             name='email'
             id='email'
@@ -103,7 +140,7 @@ export default function RegistrationForm() {
         <div className={styles.field}>
           <label htmlFor='phone'>Celular</label>
           <input
-            {...register('phone', { required: true })}
+            {...register('phone', { required: false })}
             type='text'
             name='phone'
             id='phone'
@@ -153,7 +190,7 @@ export default function RegistrationForm() {
             </a>
           </label>
           <input
-            {...register('terminos', { required: true })}
+            {...register('terminos', { required: false })}
             type='checkbox'
             name='terminos'
             id='terminos'
@@ -163,6 +200,7 @@ export default function RegistrationForm() {
         <div className={styles.field}>
           <button className={styles.btn}>Enviar</button>
         </div>
+        {image.length > 0 && image.map((item) => <p>{item}</p>)}
       </form>
     </>
   )
