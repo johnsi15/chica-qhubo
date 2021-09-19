@@ -1,6 +1,7 @@
 import styles from './RegistrationForm.module.css'
 import { useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
+import axios from 'axios'
 
 export default function RegistrationForm() {
   const [filesUploaded, setFilesUploaded] = useState([])
@@ -16,24 +17,12 @@ export default function RegistrationForm() {
   const onSubmit = (data) => {
     console.log(data)
     console.log('Submit')
-    // postData(data, image)
+    postData(data)
   }
 
-  const postData = async (data, images) => {
+  const postData = async (data) => {
     try {
-      data = { ...data, images: [...filesUploaded] }
-      console.log(data)
-      // console.log(filesUploaded)
-      console.log('images -> ')
-      console.log(images)
-
-      images.forEach((img) => {
-        uploadToServer(img)
-      })
-      // uploadToServer(images)
-
-      setFilesUploaded([])
-      setImage([])
+      data = { ...data, images: image }
       // const res = await fetch('/api/girl', {
       //   method: 'POST',
       //   headers: { 'Content-type': 'application/json' },
@@ -43,18 +32,49 @@ export default function RegistrationForm() {
       // const dataRes = await res.json()
       // console.log(dataRes)
       // console.log(errors)
+      uploadToServer(data)
+
+      setFilesUploaded([])
+      setImage([])
     } catch (error) {
       console.log(error)
     }
   }
 
-  const uploadToServer = async (images) => {
-    const body = new FormData()
-    body.append('file', images)
-    const res = await fetch('/api/file', {
-      method: 'POST',
-      body,
+  const uploadToServer = async (data) => {
+    // const body = new FormData()
+    // body.append('photos', filesUploaded)
+
+    const config = {
+      headers: { 'content-type': 'multipart/form-data' },
+      onUploadProgress: (event) => {
+        console.log(
+          `Current progress:`,
+          Math.round((event.loaded * 100) / event.total)
+        )
+      },
+    }
+
+    const formData = new FormData()
+
+    formData.append('folder', cleanText(data.names))
+
+    Array.from(filesUploaded).forEach((file, index) => {
+      // console.log(file[index].name)
+      // Object.defineProperty(file, 'name', {
+      //   writable: true,
+      //   value: `${data.names}/${cleanText(file.name)}`,
+      // })
+      formData.append('images', file)
     })
+
+    // formData.append('names', data.names)
+
+    const res = await axios.post('/api/uploads', formData, config)
+    // const res = await fetch('/api/file', {
+    //   method: 'POST',
+    //   body,
+    // })
     console.log('res uploadToServer ')
     console.log(res)
   }
@@ -69,26 +89,41 @@ export default function RegistrationForm() {
     https://stackoverflow.com/questions/33531140/get-file-size-in-mb-or-kb/33531404
   */
 
+  function cleanText(text) {
+    return text
+      .replaceAll(' ', '-')
+      .replaceAll(/[&\/\\#,+()$~%´'"ñ:*¿?!¡;<>{}]/g, '')
+      .toLowerCase()
+      .trim()
+  }
+
   const imageNames = []
-  const imageFiles = []
+  let imageFiles = []
 
   if (watch('images')) {
     console.log('watch images -> ')
     const files = watch('images')
+    // console.log('This si files images')
+    // console.log(files)
     for (const property in files) {
       if (typeof files[property] === 'object') {
-        let nameFile = files[property].name.replaceAll(' ', '-').trim()
+        let nameFile = cleanText(files[property].name)
+          .replaceAll(' ', '-')
+          .replaceAll(/[&\/\\#,+()$~%´'":*?<>{}]/g, '')
+          .toLowerCase()
+          .trim()
         // console.log(`${property}: ${nameFile}`)
         imageNames.push(nameFile)
-        imageFiles.push(files[property])
+        // imageFiles.push(files)
       }
     }
+    imageFiles = [...files]
   }
 
   useEffect(() => {
-    console.log(watch('images'))
+    // console.log(watch('images'))
     if (watch('images').length > 0) {
-      console.log('watch images -> ')
+      // console.log('watch images -> ')
       // const files = watch('images')
       setImage([...image, ...imageNames])
       setFilesUploaded([...filesUploaded, ...imageFiles])
@@ -97,8 +132,8 @@ export default function RegistrationForm() {
 
   console.log('this is file state ')
   console.log(filesUploaded)
-  console.log('this is image state ')
-  console.log(image)
+  // console.log('this is image state ')
+  // console.log(image)
 
   return (
     <>
@@ -167,6 +202,7 @@ export default function RegistrationForm() {
               name='images'
               id='images'
               multiple
+              accept='image/png, image/jpeg'
             />
             <span>Seleccionar archivo</span>
           </div>
@@ -200,7 +236,7 @@ export default function RegistrationForm() {
         <div className={styles.field}>
           <button className={styles.btn}>Enviar</button>
         </div>
-        {image.length > 0 && image.map((item) => <p>{item}</p>)}
+        {image.length > 0 && image.map((item) => <p key={item}>{item}</p>)}
       </form>
     </>
   )

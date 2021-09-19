@@ -1,5 +1,6 @@
 import dbConnect from '../../lib/dbConnect'
 import Girl from '../../models/Girl'
+import fs from 'fs'
 
 export default async (req, res) => {
   // res.statusCode = 200
@@ -13,6 +14,17 @@ export default async (req, res) => {
       try {
         const girl = new Girl(req.body)
         await girl.save()
+
+        fs.mkdir(
+          `./public/uploads/${req.body.names
+            .replaceAll(' ', '-')
+            .toLowerCase()
+            .trim()}`,
+          { recursive: true },
+          (err) => {
+            if (err) throw err
+          }
+        )
 
         return res
           .status(200)
