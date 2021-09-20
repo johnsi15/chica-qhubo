@@ -57,7 +57,7 @@ export default function RegistrationForm() {
 
     const formData = new FormData()
 
-    formData.append('folder', cleanText(data.names))
+    formData.append('folder', cleanText(data.names)) // Importante definir el nombre del folder antes de las images
 
     Array.from(filesUploaded).forEach((file, index) => {
       // console.log(file[index].name)
