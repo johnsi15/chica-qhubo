@@ -174,6 +174,16 @@ export default function RegistrationForm() {
     }
   }, [errors.images])
 
+  const handleRemoveImage = (event, id) => {
+    event.preventDefault()
+    console.log('Removing image' + id)
+    const newList = image.filter((item) => item !== id)
+    // const newList = filesUploaded.filter((item) => item !== id)
+
+    setImage(newList)
+    // setFilesUploaded(newList)
+  }
+
   return (
     <>
       <form
@@ -327,9 +337,26 @@ export default function RegistrationForm() {
           </aside>
         </div>
 
-        <div className={styles.field}>
-          {image.length > 0 &&
-            image.map((image) => <div key={image}>{image}</div>)}
+        <div
+          className={`${styles.field} ${
+            image.length > 0 && styles.images_upload
+          }`}
+        >
+          {image.length > 0 && (
+            <ul>
+              {image.map((image) => {
+                let imageMod = image.split('/')
+                return (
+                  <li key={imageMod}>
+                    {imageMod[1]}{' '}
+                    <a href='#' onClick={(e) => handleRemoveImage(e, image)}>
+                      Eliminar
+                    </a>
+                  </li>
+                )
+              })}
+            </ul>
+          )}
         </div>
 
         <div className={`${styles.field_lg}`}>
