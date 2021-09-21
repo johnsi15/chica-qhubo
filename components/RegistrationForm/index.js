@@ -2,6 +2,29 @@ import styles from './RegistrationForm.module.css'
 import { useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import axios from 'axios'
+import { yupResolver } from '@hookform/resolvers/yup'
+import * as yup from 'yup'
+
+const schema = yup.object().shape({
+  names: yup.string().required('Required'),
+  images: yup.mixed().required('You need to provide a file'),
+  // .test('fileSize', 'The file is too large', (value) => {
+  //   console.log('yup value')
+  //   console.log(value)
+  //   if (value.length > 0) {
+  //     Array.from(value).forEach((file, index) => {
+  //       if (file.size <= 2000000) {
+  //         return true
+  //       }
+  //     })
+  //   }
+  //   // return value && value[0].size <= 2000000
+  //   return false
+  // }),
+  // .test('type', 'We only support jpeg', (value) => {
+  //   return value && value[0].type === 'image/jpeg'
+  // }),
+})
 
 export default function RegistrationForm() {
   const [filesUploaded, setFilesUploaded] = useState([])
@@ -141,6 +164,16 @@ export default function RegistrationForm() {
   // console.log('this is image state ')
   // console.log(image)
 
+  console.log(errors.names)
+  console.log(errors.images)
+
+  useEffect(() => {
+    if (errors.images && errors.images.type === 'lessThan2MB') {
+      setFilesUploaded([])
+      setImage([])
+    }
+  }, [errors.images])
+
   return (
     <>
       <form
@@ -224,7 +257,39 @@ export default function RegistrationForm() {
           </label>
           <div className={styles.fileContainer}>
             <input
-              {...register('images', { required: true })}
+              {...register('images', {
+                validate: {
+                  required: (files) => files && files.length > 0,
+                  acceptedFormats: (files) => {
+                    let error = false
+                    Array.from(files).forEach((file, index) => {
+                      error = ['image/jpeg', 'image/png', 'image/jpg'].includes(
+                        file?.type
+                      )
+                    })
+
+                    if (!error) {
+                      return 'Formatos permitidos de las fotos jpg o png.'
+                    } else {
+                      return true
+                    }
+                  },
+                  lessThan2MB: (files) => {
+                    let error = false
+                    Array.from(files).forEach((file, index) => {
+                      if (file?.size <= 2000000) {
+                        error = true
+                      }
+                    })
+
+                    if (!error) {
+                      return 'Una de las fotos es demasaido pesada Max 2Mb por foto.'
+                    } else {
+                      return true
+                    }
+                  },
+                },
+              })}
               type='file'
               name='images'
               id='images'
@@ -233,10 +298,16 @@ export default function RegistrationForm() {
             />
             <span>Seleccionar archivo</span>
           </div>
-          {errors.images && (
+          {errors.images && errors.images.type === 'required' && (
             <span className={styles.error_input}>
-              Este campo es obligatorio
+              Este campo es obligatorio.
             </span>
+          )}
+          {errors.images && errors.images.type === 'acceptedFormats' && (
+            <span className={styles.error_input}>{errors.images.message}</span>
+          )}
+          {errors.images && errors.images.type === 'lessThan2MB' && (
+            <span className={styles.error_input}>{errors.images.message}</span>
           )}
         </div>
 
@@ -257,7 +328,8 @@ export default function RegistrationForm() {
         </div>
 
         <div className={styles.field}>
-          {image.length > 0 && image.map((image) => <div>{image}</div>)}
+          {image.length > 0 &&
+            image.map((image) => <div key={image}>{image}</div>)}
         </div>
 
         <div className={`${styles.field_lg}`}>
@@ -294,7 +366,6 @@ export default function RegistrationForm() {
         <div className={styles.field_btn}>
           <button className={styles.btn}>Enviar</button>
         </div>
-        {image.length > 0 && image.map((item) => <p key={item}>{item}</p>)}
       </form>
     </>
   )
