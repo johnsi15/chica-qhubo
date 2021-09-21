@@ -15,8 +15,8 @@ export default function Home({ girls }) {
             <Image
               src='/logo-chica-qhubo.svg'
               alt='Chica Qhubo'
-              width={120}
-              height={160}
+              width={247}
+              height={135}
             />
           </div>
           <div className={styles.container}>
@@ -63,6 +63,18 @@ export default function Home({ girls }) {
                   10. La convocatoria inicia el 30 de agosto y finaliza el 15 de
                   septiembre.
                 </li>
+                <li>
+                  11. Las mujeres seleccionadas serán contactadas vía email o de
+                  forma telefónica donde se les informarán los paso a seguir. En
+                  caso de no poder establecer comunicación durante la semana
+                  siguiente a su elección, se procederá a elegir a otra
+                  participante en su lugar.
+                </li>
+                <li>
+                  12. De llegar a ser seleccionadas, quienes participan como
+                  influenciadoras se comprometen a compartir en sus redes
+                  sociales su salida mencionando al Qhubo (Facebook o IG).
+                </li>
               </ul>
             </div>
             <div className={styles.recibe}>
@@ -73,7 +85,7 @@ export default function Home({ girls }) {
                   perfil corto.
                 </li>
                 <li>
-                  2. Son 15 seleccionadas que serán publicadas semanalmente.
+                  2. Son 20 seleccionadas que serán publicadas mensualmente.
                 </li>
                 <li>
                   3. Fotografías profesionales para la publicación en el diario.

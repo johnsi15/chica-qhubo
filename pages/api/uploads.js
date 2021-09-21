@@ -46,7 +46,7 @@ const apiRoute = nextConnect({
 })
 
 // Returns middleware that processes multiple files sharing the same field name.
-const uploadMiddleware = upload.array('images', 15)
+const uploadMiddleware = upload.array('images', 5)
 
 // Adds the middleware to Next-Connect
 apiRoute.use(uploadMiddleware)

@@ -11,6 +11,7 @@ export default function RegistrationForm() {
     register,
     handleSubmit,
     watch,
+    setFocus,
     formState: { errors },
   } = useForm()
 
@@ -112,8 +113,9 @@ export default function RegistrationForm() {
           .replaceAll(/[&\/\\#,+()$~%´'":*?<>{}]/g, '')
           .toLowerCase()
           .trim()
+        let nameFolder = cleanText(watch('names'))
         // console.log(`${property}: ${nameFile}`)
-        imageNames.push(nameFile)
+        imageNames.push(`${nameFolder}/${nameFile}`)
         // imageFiles.push(files)
       }
     }
@@ -130,6 +132,10 @@ export default function RegistrationForm() {
     }
   }, [watch('images')])
 
+  useEffect(() => {
+    setFocus('names')
+  }, [setFocus])
+
   console.log('this is file state ')
   console.log(filesUploaded)
   // console.log('this is image state ')
@@ -142,62 +148,83 @@ export default function RegistrationForm() {
         encType='multipart/form-data'
         onSubmit={handleSubmit(onSubmit)}
       >
-        <div className={styles.field}>
+        <div className={`${styles.field} ${styles.required}`}>
           <label htmlFor='names'>Nombres y Apellidos</label>
           <input
-            {...register('names', { required: false })}
+            {...register('names', { required: true, maxLength: 100 })}
             type='text'
             name='names'
             id='names'
           />
-          {errors.names && <span>This field is required</span>}
+          {errors.names && (
+            <span className={styles.error_input}>
+              Este campo es obligatorio
+            </span>
+          )}
         </div>
-        <div className={styles.field}>
+        <div className={`${styles.field} ${styles.required}`}>
           <label htmlFor='birthday'>Fecha de Nacimiento</label>
           <input
-            {...register('birthday', { required: false })}
+            {...register('birthday', { required: true })}
             type='date'
             name='birthday'
             id='birthday'
           />
-          {errors.birthday && <span>This field is required</span>}
+          {errors.birthday && (
+            <span className={styles.error_input}>
+              Este campo es obligatorio
+            </span>
+          )}
         </div>
-        <div className={styles.field}>
+        <div className={`${styles.field} ${styles.required}`}>
+          <label htmlFor='document'>Cédula de Ciudadanía</label>
+          <input
+            {...register('document', { required: true, maxLength: 12 })}
+            type='text'
+            name='document'
+            id='document'
+          />
+          {errors.document && (
+            <span className={styles.error_input}>
+              Este campo es obligatorio
+            </span>
+          )}
+        </div>
+        <div className={`${styles.field} ${styles.required}`}>
           <label htmlFor='email'>Correo Electrónico</label>
           <input
-            {...register('email', { required: false })}
+            {...register('email', { required: true })}
             type='email'
             name='email'
             id='email'
           />
-          {errors.email && <span>This field is required</span>}
+          {errors.email && (
+            <span className={styles.error_input}>
+              Este campo es obligatorio
+            </span>
+          )}
         </div>
-        <div className={styles.field}>
+        <div className={`${styles.field} ${styles.required}`}>
           <label htmlFor='phone'>Celular</label>
           <input
-            {...register('phone', { required: false })}
+            {...register('phone', { required: true, maxLength: 10 })}
             type='text'
             name='phone'
             id='phone'
           />
-          {errors.images && <span>This field is required</span>}
+          {errors.phone && (
+            <span className={styles.error_input}>
+              Este campo es obligatorio
+            </span>
+          )}
         </div>
-        <div className={styles.field}>
-          <label htmlFor='social_network'>
-            Redes sociales <span>(Mínimos 5k seguidores)</span>
+        <div className={`${styles.field} ${styles.photo} ${styles.required}`}>
+          <label htmlFor='images'>
+            Subir Foto <span>(Subir 5 imágenes máximo.)</span>
           </label>
-          <input
-            {...register('social_network', { required: false })}
-            type='text'
-            name='social_network'
-            id='social_network'
-          />
-        </div>
-        <div className={styles.field}>
-          <label htmlFor='images'>Subir Foto</label>
           <div className={styles.fileContainer}>
             <input
-              {...register('images', { required: false })}
+              {...register('images', { required: true })}
               type='file'
               name='images'
               id='images'
@@ -206,34 +233,65 @@ export default function RegistrationForm() {
             />
             <span>Seleccionar archivo</span>
           </div>
-          {errors.images && <span>This field is required</span>}
+          {errors.images && (
+            <span className={styles.error_input}>
+              Este campo es obligatorio
+            </span>
+          )}
         </div>
-        <div className={`${styles.field} ${styles.terminos}`}>
-          <label htmlFor='terminos'>
-            Acepto los{' '}
-            <a
-              href='https://www.laopinion.com.co/terminos-condiciones'
-              target='_blank'
-            >
-              Términos y condiciones
-            </a>{' '}
-            y el tratamiento de mis datos conforme a la{' '}
-            <a
-              href='https://www.laopinion.com.co/politica-de-tratamiento-de-datos-personales'
-              target='_blank'
-            >
-              Política de Tratamiento de datos de La Opinión.
-            </a>
+
+        <div className={styles.field}>
+          <label htmlFor='social_network'>
+            Redes sociales <span>(Mínimos 5k seguidores)</span>
           </label>
           <input
-            {...register('terminos', { required: false })}
-            type='checkbox'
-            name='terminos'
-            id='terminos'
+            {...register('social_network', { required: true })}
+            type='text'
+            name='social_network'
+            id='social_network'
           />
-          {errors.terminos && <span>This field is required</span>}
+          <aside>
+            *Este espacio solo será diligenciado por quienes participan como
+            influenciadoras
+          </aside>
         </div>
+
         <div className={styles.field}>
+          {image.length > 0 && image.map((image) => <div>{image}</div>)}
+        </div>
+
+        <div className={`${styles.field_lg}`}>
+          <div className={styles.terminos}>
+            <label htmlFor='terminos'>
+              Acepto los{' '}
+              <a
+                href='https://www.laopinion.com.co/terminos-condiciones'
+                target='_blank'
+              >
+                Términos y condiciones
+              </a>{' '}
+              y el tratamiento de mis datos conforme a la{' '}
+              <a
+                href='https://www.laopinion.com.co/politica-de-tratamiento-de-datos-personales'
+                target='_blank'
+              >
+                Política de Tratamiento de datos de La Opinión.
+              </a>
+            </label>
+            <input
+              {...register('terminos', { required: true })}
+              type='checkbox'
+              name='terminos'
+              id='terminos'
+            />
+          </div>
+          {errors.terminos && (
+            <span className={styles.error_input}>
+              Este campo es obligatorio
+            </span>
+          )}
+        </div>
+        <div className={styles.field_btn}>
           <button className={styles.btn}>Enviar</button>
         </div>
         {image.length > 0 && image.map((item) => <p key={item}>{item}</p>)}
