@@ -53,8 +53,8 @@ apiRoute.use(uploadMiddleware)
 
 // Create a helper function
 async function moveFile(oldPath, newPath, folder) {
-  console.log(oldPath)
-  console.log(newPath)
+  // console.log(oldPath)
+  // console.log(newPath)
   // 1. Create the destination directory if it does not exist
   // Set the `recursive` option to `true` to create all the subdirectories
   await fs.mkdir(folder, { recursive: true }, (err) => {
@@ -68,7 +68,7 @@ async function moveFile(oldPath, newPath, folder) {
   try {
     // 2. Rename the file (move it to the new directory)
     fs.rename(oldPath, newPath, (err) => {
-      console.log('rename')
+      // console.log('rename')
       if (err) throw err
     })
   } catch (error) {
@@ -86,10 +86,10 @@ async function moveFile(oldPath, newPath, folder) {
 
 // Process a POST request
 apiRoute.post((req, res) => {
-  console.log('req files')
-  console.log(req.files)
+  // console.log('req files')
+  // console.log(req.files)
   req.files.forEach((file) => {
-    console.log(file.filename)
+    // console.log(file.filename)
     const folder = `./public/${req.body.folder}`
     const currentPath = `./public/tmp/uploads/${file.filename}`
     const newPath = `./public/${req.body.folder}/${file.filename}`

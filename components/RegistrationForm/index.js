@@ -2,29 +2,8 @@ import styles from './RegistrationForm.module.css'
 import { useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import axios from 'axios'
-import { yupResolver } from '@hookform/resolvers/yup'
-import * as yup from 'yup'
-
-const schema = yup.object().shape({
-  names: yup.string().required('Required'),
-  images: yup.mixed().required('You need to provide a file'),
-  // .test('fileSize', 'The file is too large', (value) => {
-  //   console.log('yup value')
-  //   console.log(value)
-  //   if (value.length > 0) {
-  //     Array.from(value).forEach((file, index) => {
-  //       if (file.size <= 2000000) {
-  //         return true
-  //       }
-  //     })
-  //   }
-  //   // return value && value[0].size <= 2000000
-  //   return false
-  // }),
-  // .test('type', 'We only support jpeg', (value) => {
-  //   return value && value[0].type === 'image/jpeg'
-  // }),
-})
+// import { yupResolver } from '@hookform/resolvers/yup'
+// import * as yup from 'yup'
 
 export default function RegistrationForm() {
   const [filesUploaded, setFilesUploaded] = useState([])
@@ -35,6 +14,7 @@ export default function RegistrationForm() {
     handleSubmit,
     watch,
     setFocus,
+    setValue,
     formState: { errors },
   } = useForm()
 
@@ -60,6 +40,13 @@ export default function RegistrationForm() {
 
       setFilesUploaded([])
       setImage([])
+      setValue('names', '')
+      setValue('birthday', '')
+      setValue('document', '')
+      setValue('email', '')
+      setValue('phone', '')
+      setValue('social_network', '')
+      setValue('terminos', '')
     } catch (error) {
       console.log(error)
     }
@@ -164,24 +151,37 @@ export default function RegistrationForm() {
   // console.log('this is image state ')
   // console.log(image)
 
-  console.log(errors.names)
-  console.log(errors.images)
+  // console.log(errors.names)
+  // console.log(errors.images)
+  // console.log(errors.phone)
 
   useEffect(() => {
-    if (errors.images && errors.images.type === 'lessThan2MB') {
+    if (
+      (errors.images && errors.images.type === 'lessThan2MB') ||
+      (errors.images && errors.images.type === 'maxFiles')
+    ) {
       setFilesUploaded([])
       setImage([])
     }
   }, [errors.images])
 
-  const handleRemoveImage = (event, id) => {
+  const handleRemoveImage = (event, id, indexFileUploaded) => {
     event.preventDefault()
     console.log('Removing image' + id)
     const newList = image.filter((item) => item !== id)
-    // const newList = filesUploaded.filter((item) => item !== id)
+    // const newListUploaded = filesUploaded.filter(
+    //   (item, index) => index !== indexFileUploaded
+    // )
+    // console.log(newListUploaded)
 
-    setImage(newList)
-    // setFilesUploaded(newList)
+    setImage(newList) // Validar que solo sean 5 imagenes
+
+    const newListUploaded = Array.from(filesUploaded).filter(
+      (item, index) => index !== indexFileUploaded
+    )
+    console.log('new List Uploaded')
+    console.log(newListUploaded)
+    setFilesUploaded(newListUploaded)
   }
 
   return (
@@ -255,9 +255,14 @@ export default function RegistrationForm() {
             name='phone'
             id='phone'
           />
-          {errors.phone && (
+          {errors.phone && errors.phone.type === 'required' && (
             <span className={styles.error_input}>
               Este campo es obligatorio
+            </span>
+          )}
+          {errors.phone && errors.phone.type === 'maxLength' && (
+            <span className={styles.error_input}>
+              Este campo debe tener máximo 10 números.
             </span>
           )}
         </div>
@@ -298,6 +303,13 @@ export default function RegistrationForm() {
                       return true
                     }
                   },
+                  maxFiles: (files) => {
+                    if (files && files.length > 5) {
+                      return 'Solo se permiten 5 fotos.'
+                    } else {
+                      return true
+                    }
+                  },
                 },
               })}
               type='file'
@@ -319,6 +331,9 @@ export default function RegistrationForm() {
           {errors.images && errors.images.type === 'lessThan2MB' && (
             <span className={styles.error_input}>{errors.images.message}</span>
           )}
+          {errors.images && errors.images.type === 'maxFiles' && (
+            <span className={styles.error_input}>{errors.images.message}</span>
+          )}
         </div>
 
         <div className={styles.field}>
@@ -326,7 +341,7 @@ export default function RegistrationForm() {
             Redes sociales <span>(Mínimos 5k seguidores)</span>
           </label>
           <input
-            {...register('social_network', { required: true })}
+            {...register('social_network', { required: false })}
             type='text'
             name='social_network'
             id='social_network'
@@ -344,12 +359,15 @@ export default function RegistrationForm() {
         >
           {image.length > 0 && (
             <ul>
-              {image.map((image) => {
+              {image.map((image, index) => {
                 let imageMod = image.split('/')
                 return (
-                  <li key={imageMod}>
+                  <li key={index}>
                     {imageMod[1]}{' '}
-                    <a href='#' onClick={(e) => handleRemoveImage(e, image)}>
+                    <a
+                      href='#'
+                      onClick={(e) => handleRemoveImage(e, image, index)}
+                    >
                       Eliminar
                     </a>
                   </li>

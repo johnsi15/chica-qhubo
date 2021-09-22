@@ -11,6 +11,10 @@ const GirlSchema = new mongoose.Schema({
     type: Date,
     required: [true, 'Por favor ingrese una fecha.'],
   },
+  document: {
+    type: String,
+    required: [true, 'Por favor ingrese un número de documento.'],
+  },
   email: {
     type: String,
     match: [
@@ -30,6 +34,10 @@ const GirlSchema = new mongoose.Schema({
   },
   social_network: {
     type: String,
+  },
+  terminos: {
+    type: Boolean,
+    required: [true, 'Por favor Acepte los Términos y condiciones.'],
   },
   images: {
     required: [false, 'Por favor cargue una foto.'],
