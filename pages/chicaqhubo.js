@@ -6,6 +6,29 @@ import styles from '../styles/Home.module.css'
 import dbConnect from '../lib/dbConnect'
 import Girl from '../models/Girl'
 
+function getDateHuman(unixTimestamp) {
+  // const unixTimestamp = 1575909015
+
+  const milliseconds = unixTimestamp * 1000 // 1575909015000
+
+  const dateObject = new Date(milliseconds)
+
+  // const humanDateFormat = dateObject.toLocaleString() // 5/21/2021, 11:49:16 AM
+  // console.log(humanDateFormat)
+
+  const dayName = dateObject.toLocaleString('es-CO', { weekday: 'long' }) // Lunes
+  const month = dateObject.toLocaleString('es-CO', { month: 'long' }) // Mayo
+  const dayNumber = dateObject.toLocaleString('es-CO', { day: 'numeric' }) // 9
+  const year = dateObject.toLocaleString('es-CO', { year: 'numeric' }) // 2019
+  // const hour = dateObject.toLocaleString('es-CO', { hour: 'numeric' }) // 10 AM
+  // const minute = dateObject.toLocaleString('es-CO', { minute: 'numeric' }) // 30
+  // const second = dateObject.toLocaleString('es-CO', { second: 'numeric' }) // 15
+  // dateObject.toLocaleString('es-CO', { timeZoneName: 'short' }) // 12/9/2019, 10:30:15 AM CST
+  // Viernes, 16 de Julio de 2021
+  const dateHuman = `${dayName}, ${dayNumber} de ${month} del ${year}`
+  return dateHuman
+}
+
 export default function Home({ girls }) {
   return (
     <>
@@ -20,7 +43,6 @@ export default function Home({ girls }) {
             />
           </div>
           <div className={styles.container}>
-            <h2 className={styles.title}>Regístrate aquí</h2>
             <RegistrationForm />
             <div className={styles.terminos}>
               <h2>Términos y Condiciones</h2>
@@ -95,6 +117,7 @@ export default function Home({ girls }) {
             {girls.map((girl) => (
               <p className={styles.girl} key={girl._id}>
                 {girl.names}
+                {girl?.create_date && girl.create_date}
               </p>
             ))}
           </div>

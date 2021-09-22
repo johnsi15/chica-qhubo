@@ -15,6 +15,10 @@ const GirlSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Por favor ingrese un número de documento.'],
   },
+  create_date: {
+    type: Date,
+    required: [true, 'Por favor ingrese una fecha de registro.'],
+  },
   email: {
     type: String,
     match: [
