@@ -363,3 +363,39 @@
     opacity: 1;
   }
 }
+
+@media screen and (max-width: 768px) {
+  .field {
+    width: 40%;
+  }
+  .fileContainer {
+    width: 100%;
+  }
+  .form {
+    justify-content: center;
+  }
+  .field label {
+    line-height: 18px;
+  }
+  .field_lg {
+    width: 85%;
+  }
+  .terminos {
+    column-gap: 15px;
+  }
+  .terminos label {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .field {
+    width: 100%;
+  }
+  .field_lg {
+    width: 100%;
+  }
+  .field aside {
+    margin-top: 5px;
+  }
+}

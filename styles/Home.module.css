@@ -80,3 +80,21 @@
   font-weight: 400;
   padding-bottom: 20px;
 }
+
+@media screen and (max-width: 768px) {
+  .logo {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .container {
+    width: 96%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+    width: 90%;
+  }
+}
