@@ -117,6 +117,7 @@ export default function RegistrationForm() {
           setMessage('Gracias por participar.')
 
           setValue('names', '')
+          setValue('lastname', '')
           setValue('birthday', '')
           setValue('document', '')
           setValue('email', '')
@@ -282,16 +283,60 @@ export default function RegistrationForm() {
               onSubmit={handleSubmit(onSubmit)}
             >
               <div className={`${styles.field} ${styles.required}`}>
-                <label htmlFor='names'>Nombres y Apellidos</label>
+                <label htmlFor='names'>Nombres</label>
                 <input
-                  {...register('names', { required: true, maxLength: 100 })}
+                  {...register('names', { required: true, maxLength: 50 })}
                   type='text'
                   name='names'
                   id='names'
                 />
-                {errors.names && (
+                {errors.names && errors.names.type === 'required' && (
                   <span className={styles.error_input}>
                     Este campo es obligatorio
+                  </span>
+                )}
+                {errors.names && errors.names.type === 'maxLength' && (
+                  <span className={styles.error_input}>
+                    Este campo debe tener máximo 50 caracteres.
+                  </span>
+                )}
+              </div>
+              <div className={`${styles.field} ${styles.required}`}>
+                <label htmlFor='lastname'>Apellidos</label>
+                <input
+                  {...register('lastname', { required: true, maxLength: 50 })}
+                  type='text'
+                  name='lastname'
+                  id='lastname'
+                />
+                {errors.lastname && errors.lastname.type === 'required' && (
+                  <span className={styles.error_input}>
+                    Este campo es obligatorio
+                  </span>
+                )}
+                {errors.lastname && errors.lastname.type === 'maxLength' && (
+                  <span className={styles.error_input}>
+                    Este campo debe tener máximo 50 caracteres.
+                  </span>
+                )}
+              </div>
+
+              <div className={`${styles.field} ${styles.required}`}>
+                <label htmlFor='document'>Cédula de Ciudadanía</label>
+                <input
+                  {...register('document', { required: true, maxLength: 12 })}
+                  type='number'
+                  name='document'
+                  id='document'
+                />
+                {errors.document && errors.document.type === 'required' && (
+                  <span className={styles.error_input}>
+                    Este campo es obligatorio
+                  </span>
+                )}
+                {errors.document && errors.document.type === 'maxLength' && (
+                  <span className={styles.error_input}>
+                    Este campo debe tener máximo 12 números.
                   </span>
                 )}
               </div>
@@ -306,25 +351,6 @@ export default function RegistrationForm() {
                 {errors.birthday && (
                   <span className={styles.error_input}>
                     Este campo es obligatorio
-                  </span>
-                )}
-              </div>
-              <div className={`${styles.field} ${styles.required}`}>
-                <label htmlFor='document'>Cédula de Ciudadanía</label>
-                <input
-                  {...register('document', { required: true, maxLength: 12 })}
-                  type='text'
-                  name='document'
-                  id='document'
-                />
-                {errors.document && errors.document.type === 'required' && (
-                  <span className={styles.error_input}>
-                    Este campo es obligatorio
-                  </span>
-                )}
-                {errors.document && errors.document.type === 'maxLength' && (
-                  <span className={styles.error_input}>
-                    Este campo debe tener máximo 12 números.
                   </span>
                 )}
               </div>
@@ -346,7 +372,7 @@ export default function RegistrationForm() {
                 <label htmlFor='phone'>Celular</label>
                 <input
                   {...register('phone', { required: true, maxLength: 10 })}
-                  type='text'
+                  type='number'
                   name='phone'
                   id='phone'
                 />
@@ -360,6 +386,21 @@ export default function RegistrationForm() {
                     Este campo debe tener máximo 10 números.
                   </span>
                 )}
+              </div>
+              <div className={styles.field}>
+                <label htmlFor='social_network'>
+                  Redes sociales <span>(Mínimos 5k seguidores)</span>
+                </label>
+                <input
+                  {...register('social_network', { required: false })}
+                  type='text'
+                  name='social_network'
+                  id='social_network'
+                />
+                <aside>
+                  *Este espacio solo será diligenciado por quienes participan
+                  como influenciadoras
+                </aside>
               </div>
               <div
                 className={`${styles.field} ${styles.photo} ${styles.required}`}
@@ -403,8 +444,8 @@ export default function RegistrationForm() {
                           }
                         },
                         maxFiles: (files) => {
-                          console.log('maxfiles ->')
-                          console.log(files.length)
+                          // console.log('maxfiles ->')
+                          // console.log(files.length)
                           if (files && files.length > 5) {
                             return 'Solo se permiten 5 fotos.'
                           } else {
@@ -441,47 +482,33 @@ export default function RegistrationForm() {
                     {errors.images.message}
                   </span>
                 )}
-              </div>
 
-              <div className={styles.field}>
-                <label htmlFor='social_network'>
-                  Redes sociales <span>(Mínimos 5k seguidores)</span>
-                </label>
-                <input
-                  {...register('social_network', { required: false })}
-                  type='text'
-                  name='social_network'
-                  id='social_network'
-                />
-                <aside>
-                  *Este espacio solo será diligenciado por quienes participan
-                  como influenciadoras
-                </aside>
-              </div>
-
-              <div
-                className={`${styles.field} ${
-                  image.length > 0 && styles.images_upload
-                }`}
-              >
-                {image.length > 0 && (
-                  <ul>
-                    {image.map((image, index) => {
-                      let imageMod = image.split('/')
-                      return (
-                        <li key={index}>
-                          {imageMod[1]}{' '}
-                          <a
-                            href='#'
-                            onClick={(e) => handleRemoveImage(e, image, index)}
-                          >
-                            Eliminar
-                          </a>
-                        </li>
-                      )
-                    })}
-                  </ul>
-                )}
+                <div
+                  className={`${styles.field} ${
+                    image.length > 0 && styles.images_upload
+                  }`}
+                >
+                  {image.length > 0 && (
+                    <ul>
+                      {image.map((image, index) => {
+                        let imageMod = image.split('/')
+                        return (
+                          <li key={index}>
+                            {imageMod[1]}{' '}
+                            <a
+                              href='#'
+                              onClick={(e) =>
+                                handleRemoveImage(e, image, index)
+                              }
+                            >
+                              Eliminar
+                            </a>
+                          </li>
+                        )
+                      })}
+                    </ul>
+                  )}
+                </div>
               </div>
 
               <div className={`${styles.field_lg}`}>

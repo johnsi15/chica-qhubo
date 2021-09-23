@@ -5,7 +5,12 @@ const GirlSchema = new mongoose.Schema({
   names: {
     type: String,
     required: [true, 'Por favor se necesita un nombre.'],
-    maxlength: [40, 'El nombre no puede tener mas de 40 caracteres.'],
+    maxlength: [50, 'El nombre no puede tener mas de 50 caracteres.'],
+  },
+  lastname: {
+    type: String,
+    required: [true, 'Por favor se necesita un apellido.'],
+    maxlength: [50, 'El nombre no puede tener mas de 50 caracteres.'],
   },
   birthday: {
     type: Date,
