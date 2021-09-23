@@ -27,63 +27,16 @@ export default function RegistrationForm() {
   }
 
   const postData = async (data) => {
-    try {
-      data = {
-        ...data,
-        images: image,
-        create_date: new Date(),
-      }
-      console.log(data)
-      setLoading(true)
-      const res = await fetch('/api/girl', {
-        method: 'POST',
-        headers: { 'Content-type': 'application/json' },
-        body: JSON.stringify(data),
-      })
-
-      const dataRes = await res.json()
-      console.log(dataRes)
-      // console.log(errors)
-
-      if (dataRes.success) {
-        const resUploaded = await uploadToServer(data)
-        console.log('res uploaded -> ')
-        console.log(resUploaded)
-
-        if (resUploaded && resUploaded.data.data === 'success') {
-          setLoading(false)
-          setFilesUploaded([])
-          setImage([])
-          setMessage('Gracias por participar.')
-        } else {
-          setLoading(false)
-          setMessage('La carga de las fotos fallo.')
-        }
-
-        setValue('names', '')
-        setValue('birthday', '')
-        setValue('document', '')
-        setValue('email', '')
-        setValue('phone', '')
-        setValue('social_network', '')
-        setValue('terminos', '')
-      } else {
-        if (dataRes.message === 11000) {
-          setLoading(false)
-          setMessage('El correo electrónico ya esta registrado.')
-        } else {
-          setLoading(false)
-          setMessage('Inténtelo de nuevo más tarde Algo sucedió.')
-        }
-      }
-    } catch (error) {
-      console.log(error)
-    }
+    uploadToServer(data)
   }
 
   const uploadToServer = async (data) => {
     // const body = new FormData()
     // body.append('photos', filesUploaded)
+    let count = 0
+    let urlsImages = []
+
+    setLoading(true)
 
     const config = {
       headers: { 'content-type': 'multipart/form-data' },
@@ -98,22 +51,108 @@ export default function RegistrationForm() {
     const formData = new FormData()
     let folder = cleanText(data.email)
 
-    formData.append('folder', folder.split('@')[0]) // Importante definir el nombre del folder antes de las images
+    formData.append('folder', `${folder.split('@')[0]}-${Date.now()}`) // Importante definir el nombre del folder antes de las images
+    // formData.append(
+    //   'upload_preset',
+    //   process.env.NEXT_PUBLIC_CLOUDINARY_UNSIGNED_UPLOAD_PRESET
+    // )
+    const url = `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUDNAME}/upload`
 
-    Array.from(filesUploaded).forEach((file, index) => {
+    Array.from(filesUploaded).forEach(async (file, index) => {
       formData.append('images', file)
+      formData.append('file', file)
+      formData.append(
+        'upload_preset',
+        process.env.NEXT_PUBLIC_CLOUDINARY_UNSIGNED_UPLOAD_PRESET
+      )
+
+      try {
+        const resCloudinary = await axios.post(url, formData, config)
+        console.log('res uploadToServer cloudinary')
+        console.log(resCloudinary)
+        urlsImages.push(resCloudinary.data.secure_url)
+
+        // console.log('Url images cloudinary')
+        // console.log(urlsImages)
+        count++
+        if (count >= filesUploaded.length) {
+          postDataServer(data, urlsImages)
+          // console.log('Done')
+          // console.log(count)
+        }
+      } catch (error) {
+        console.log(error)
+        setLoading(false)
+        setMessage('La carga de las fotos fallo.')
+        setValue('images', '')
+        setFilesUploaded([])
+        setImage([])
+        // return { data: 'error' }
+      }
     })
 
-    // formData.append('names', data.names)
-    try {
-      const res = await axios.post('/api/uploads', formData, config)
-      console.log('res uploadToServer ')
-      console.log(res)
-      return res
-    } catch (error) {
-      console.log(error)
-      return { data: 'error' }
+    const postDataServer = async (data, urlsImages) => {
+      try {
+        data = {
+          ...data,
+          images: urlsImages,
+          create_date: new Date(),
+        }
+        console.log(data)
+        // setLoading(true)
+        const res = await fetch('/api/girl', {
+          method: 'POST',
+          headers: { 'Content-type': 'application/json' },
+          body: JSON.stringify(data),
+        })
+
+        const dataRes = await res.json()
+        console.log(dataRes)
+        // console.log(errors)
+
+        if (dataRes.success) {
+          setLoading(false)
+          setFilesUploaded([])
+          setImage([])
+          setMessage('Gracias por participar.')
+
+          setValue('names', '')
+          setValue('birthday', '')
+          setValue('document', '')
+          setValue('email', '')
+          setValue('phone', '')
+          setValue('social_network', '')
+          setValue('terminos', '')
+          setValue('images', '')
+        } else {
+          if (dataRes.message === 11000) {
+            setLoading(false)
+            setMessage('El correo electrónico ya esta registrado.')
+          } else {
+            setLoading(false)
+            setMessage('Inténtelo de nuevo más tarde Algo sucedió.')
+          }
+        }
+      } catch (error) {
+        console.log(error)
+        setLoading(false)
+        setMessage('Inténtelo de nuevo más tarde Algo sucedió.')
+      }
     }
+
+    // formData.append('names', data.names)
+    // try {
+    //   const res = await axios.post('/api/uploads', formData, config)
+    //   // const url = `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUDNAME}/upload`
+    //   // const resCloudinary = await axios.post(url, formData, config)
+    //   console.log('res uploadToServer')
+    //   console.log(res)
+    //   return res
+    //   // return res
+    // } catch (error) {
+    //   console.log(error)
+    //   return { data: 'error' }
+    // }
   }
 
   /*
@@ -183,11 +222,12 @@ export default function RegistrationForm() {
 
   useEffect(() => {
     if (
-      (errors.images && errors.images.type === 'lessThan2MB') ||
+      (errors.images && errors.images.type === 'lessThan5MB') ||
       (errors.images && errors.images.type === 'maxFiles')
     ) {
       setFilesUploaded([])
       setImage([])
+      setValue('images', '')
     }
   }, [errors.images])
 
@@ -348,16 +388,16 @@ export default function RegistrationForm() {
                             return true
                           }
                         },
-                        lessThan2MB: (files) => {
+                        lessThan5MB: (files) => {
                           let error = false
                           Array.from(files).forEach((file, index) => {
-                            if (file?.size <= 2000000) {
+                            if (file?.size <= 5000000) {
                               error = true
                             }
                           })
 
                           if (!error) {
-                            return 'Una de las fotos es demasaido pesada Max 2Mb por foto.'
+                            return 'Una de las fotos es demasaido pesada Max 5Mb por foto.'
                           } else {
                             return true
                           }
@@ -389,7 +429,7 @@ export default function RegistrationForm() {
                     {errors.images.message}
                   </span>
                 )}
-                {errors.images && errors.images.type === 'lessThan2MB' && (
+                {errors.images && errors.images.type === 'lessThan5MB' && (
                   <span className={styles.error_input}>
                     {errors.images.message}
                   </span>

@@ -3,6 +3,16 @@ import multer from 'multer'
 import fs from 'fs'
 import { extname } from 'path'
 
+// cloudinary.config({
+//   cloud_name: 'la-opinion',
+//   api_key: '863998964271869',
+//   api_secret: 'au9oriwX1lcPn6xc3TFKH_ugAc0',
+// })
+
+// cloudinary.v2.uploader.upload("https://upload.wikimedia.org/wikipedia/commons/a/ae/Olympic_flag.jpg",
+//   { public_id: "olympic_flag" },
+//   function(error, result) {console.log(result); });
+
 // Returns a Multer instance that provides several methods for generating
 // middleware that process files uploaded in multipart/form-data format.
 const upload = multer({
