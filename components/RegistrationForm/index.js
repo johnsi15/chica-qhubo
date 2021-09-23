@@ -222,7 +222,7 @@ export default function RegistrationForm() {
 
   useEffect(() => {
     if (
-      (errors.images && errors.images.type === 'lessThan5MB') ||
+      (errors.images && errors.images.type === 'lessThan2MB') ||
       (errors.images && errors.images.type === 'maxFiles')
     ) {
       setFilesUploaded([])
@@ -388,10 +388,10 @@ export default function RegistrationForm() {
                             return true
                           }
                         },
-                        lessThan5MB: (files) => {
+                        lessThan2MB: (files) => {
                           let error = false
                           Array.from(files).forEach((file, index) => {
-                            if (file?.size <= 5000000) {
+                            if (file?.size <= 2000000) {
                               error = true
                             }
                           })
@@ -403,6 +403,8 @@ export default function RegistrationForm() {
                           }
                         },
                         maxFiles: (files) => {
+                          console.log('maxfiles ->')
+                          console.log(files.length)
                           if (files && files.length > 5) {
                             return 'Solo se permiten 5 fotos.'
                           } else {
@@ -429,7 +431,7 @@ export default function RegistrationForm() {
                     {errors.images.message}
                   </span>
                 )}
-                {errors.images && errors.images.type === 'lessThan5MB' && (
+                {errors.images && errors.images.type === 'lessThan2MB' && (
                   <span className={styles.error_input}>
                     {errors.images.message}
                   </span>
