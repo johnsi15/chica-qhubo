@@ -27,7 +27,15 @@ export default function RegistrationForm() {
   }
 
   const postData = async (data) => {
-    uploadToServer(data)
+    setLoading(true)
+    const res = await axios.get(`/api/girl?email=${data.email}`) // Validate the email registered
+    // console.log(res.data.data)
+    if (!res.data.data) {
+      uploadToServer(data)
+    } else {
+      setLoading(false)
+      setMessage('El correo electrónico ya está registrado.')
+    }
   }
 
   const uploadToServer = async (data) => {

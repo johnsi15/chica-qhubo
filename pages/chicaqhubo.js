@@ -51,7 +51,7 @@ export default function Home({ girls }) {
                 <li>2. Residir en Norte de Santander.</li>
                 <li>
                   3. Ser bonita, de buen cuerpo, auténtica, animada, enérgica,
-                  carismática
+                  carismática.
                 </li>
                 <li>
                   4. Las participantes deberán enviar las 5 fotos con las

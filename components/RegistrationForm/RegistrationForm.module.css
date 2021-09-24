@@ -52,6 +52,10 @@
   outline: none;
 }
 
+.field input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
 .field_lg {
   width: 100%;
 }

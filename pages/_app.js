@@ -36,6 +36,20 @@ function App({ Component, pageProps }) {
           `,
         }}
       />
+      <Script src='https://cdn.onesignal.com/sdks/OneSignalSDK.js' async='' />
+      <Script
+        strategy='afterInteractive'
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.OneSignal = window.OneSignal || [];
+            OneSignal.push(function() {
+              OneSignal.init({
+                appId: "8e2b4867-3e2a-4f33-8270-d0ccd0aaad3c",
+              });
+            });
+          `,
+        }}
+      />
       <Component {...pageProps} />
     </>
   )
