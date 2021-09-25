@@ -44,7 +44,7 @@ export default function RegistrationForm() {
       ) // Validate the email registered
       // console.log(res.data.data)
       if (!res.data.data) {
-        uploadToServer(data)
+        uploadToServer(data, token)
       } else {
         setLoading(false)
         setMessage('El correo electrónico ya está registrado.')
@@ -56,7 +56,7 @@ export default function RegistrationForm() {
     }
   }
 
-  const uploadToServer = async (data) => {
+  const uploadToServer = async (data, token) => {
     // const body = new FormData()
     // body.append('photos', filesUploaded)
     let count = 0
@@ -102,7 +102,7 @@ export default function RegistrationForm() {
         // console.log(urlsImages)
         count++
         if (count >= filesUploaded.length) {
-          postDataServer(data, urlsImages)
+          postDataServer(data, urlsImages, token)
           // console.log('Done')
           // console.log(count)
         }
@@ -117,12 +117,13 @@ export default function RegistrationForm() {
       }
     })
 
-    const postDataServer = async (data, urlsImages) => {
+    const postDataServer = async (data, urlsImages, token) => {
       try {
         data = {
           ...data,
           images: urlsImages,
           create_date: new Date(),
+          token,
         }
         console.log(data)
         // setLoading(true)

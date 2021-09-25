@@ -46,13 +46,22 @@ export default function Home({ girls }) {
             <RegistrationForm />
             <div className={styles.terminos}>
               <h2>Términos y Condiciones</h2>
+              <p>
+                Ser chica Q´Hubo tiene muchas ventajas. Para nadie es un secreto
+                que nuestro periódico es el más leído de Norte de Santander, con
+                miles de lectores diarios. Haciendo parte de esta nueva sección,
+                tu imagen podrá llegar a cualquier lugar. Como tenemos todo tipo
+                de lectores, muchos podrán conocer tu belleza y tu historia de
+                vida, lo que seguramente te ayudará a abrir muchas puertas.
+                Recuerda que no es necesario ser modelo profesional, ni tener
+                cirugías. Esta nueva sección quiere destacar lo mejor de la
+                mujer nortesantandereana. A continuación te contamos los
+                términos y condiciones para participar:
+              </p>
               <ul>
                 <li>1. Ser mujer mayor de edad (De 18 a 27 años).</li>
                 <li>2. Residir en Norte de Santander.</li>
-                <li>
-                  3. Ser bonita, de buen cuerpo, auténtica, animada, enérgica,
-                  carismática.
-                </li>
+                <li>3. Ser auténtica, animada, enérgica, carismática.</li>
                 <li>
                   4. Las participantes deberán enviar las 5 fotos con las
                   siguientes características: cuerpo entero con jean y camisa
@@ -61,48 +70,35 @@ export default function Home({ girls }) {
                   mínimo de 2500px y no pesar más de 2MB.
                 </li>
                 <li>
-                  5. Deberá ser responsable por permisos con su empleador y/o
+                  5. Debes ser responsable por permisos con tu empleador y/o
                   centro de estudios para participar de las diferentes
                   producciones que se requieran.
                 </li>
                 <li>
-                  6. Estar en buenas condiciones físicas y no estar en estado de
-                  gestación.
+                  6. Un jurado calificador se encargará de hacer un proceso de
+                  selección para escoger quiénes serán publicadas en el
+                  periódico.
                 </li>
                 <li>
-                  7. No participar o haber participado en ningún tipo de evento,
-                  concurso o actividad contraria a la ley, el orden público y
-                  las buenas costumbres, en especial declarar que no he
-                  participado en ningún tipo de desnudo público.
+                  7. Las fotos, imágenes y/o videos que se produzcan como parte
+                  de la sección Chica Q´Hubo son propiedad de La Opinión y
+                  Q’Hubo Cúcuta.
                 </li>
                 <li>
-                  8. La decisión final del jurado es absoluta y no está sujeta a
-                  revisión o apelación.
+                  8. Si tienes muchos seguidores en redes sociales, podrás
+                  ayudarnos a replicar el mensaje de esta convocatoria y también
+                  compartir las distintas publicaciones de Chica Q´Hubo.
                 </li>
                 <li>
-                  9. Las fotos, imágenes y/o videos son propiedad de La Opinión
-                  y Q’Hubo Cúcuta.
+                  9. La primera convocatoria inicia el 27 de septiembre y
+                  finaliza el 10 de octubre.
                 </li>
                 <li>
-                  10. Si participa como influenciadora deberá tener un mínimo de
-                  5.000 seguidores en una de las redes sociales (Aplica para
-                  Facebook e Instagram).
-                </li>
-                <li>
-                  11. La convocatoria inicia el 27 de septiembre y finaliza el
-                  10 de octubre.
-                </li>
-                <li>
-                  12. Las mujeres seleccionadas serán contactadas vía email o de
+                  10. Las mujeres seleccionadas serán contactadas vía email o de
                   forma telefónica donde se les informarán los paso a seguir. En
                   caso de no poder establecer comunicación durante la semana
                   siguiente a su elección, se procederá a elegir a otra
                   participante en su lugar.
-                </li>
-                <li>
-                  13. De llegar a ser seleccionadas, quienes participan como
-                  influenciadoras se comprometen a compartir en sus redes
-                  sociales su salida mencionando al Q'hubo (Facebook o IG).
                 </li>
               </ul>
             </div>

@@ -30,6 +30,15 @@ export default async (req, res) => {
   switch (method) {
     case 'POST':
       try {
+        const human = await validateHuman(req.body.token)
+        // console.log(req.body.token, 'human token')
+        // console.log(human, 'human response')
+        if (!human) {
+          return res
+            .status(400)
+            .json({ success: false, message: 'human error' })
+        }
+
         const girl = new Girl(req.body)
         await girl.save()
 
@@ -42,12 +51,12 @@ export default async (req, res) => {
     case 'GET':
       try {
         // console.log(params)
-        const human = await validateHuman(token)
-        if (!human) {
-          return res
-            .status(400)
-            .json({ success: false, message: 'human error' })
-        }
+        // const human = await validateHuman(token)
+        // if (!human) {
+        //   return res
+        //     .status(400)
+        //     .json({ success: false, message: 'human error' })
+        // }
 
         let girl = await Girl.findOne({ email })
         // console.log(girl)
