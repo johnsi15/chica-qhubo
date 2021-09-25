@@ -37,3 +37,6 @@ public/tmp
 public/john-serrano
 public/john-andrey-serrano
 public/andrey-serrano
+
+lib/dbConnectRequire.js
+models/GirlRequire.js
