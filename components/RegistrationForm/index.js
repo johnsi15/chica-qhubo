@@ -1,7 +1,8 @@
 import styles from './RegistrationForm.module.css'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useForm } from 'react-hook-form'
 import axios from 'axios'
+import ReCAPTCHA from 'react-google-recaptcha'
 // import { yupResolver } from '@hookform/resolvers/yup'
 // import * as yup from 'yup'
 
@@ -10,6 +11,7 @@ export default function RegistrationForm() {
   const [image, setImage] = useState([])
   const [loading, setLoading] = useState(false)
   const [message, setMessage] = useState('')
+  const recaptchaRef = useRef()
 
   const {
     register,
@@ -23,18 +25,34 @@ export default function RegistrationForm() {
   const onSubmit = (data) => {
     console.log(data)
     console.log('Submit')
+
+    // recaptchaRef.current.execute()
+    // const recaptchaValue = recaptchaRef.current.getValue()
+    // console.log('recaptchaValue')
+    // console.log(recaptchaValue)
     postData(data)
   }
 
   const postData = async (data) => {
+    const token = await recaptchaRef.current.executeAsync()
+    // console.log('token')
+    // console.log(token)
     setLoading(true)
-    const res = await axios.get(`/api/girl?email=${data.email}`) // Validate the email registered
-    // console.log(res.data.data)
-    if (!res.data.data) {
-      uploadToServer(data)
-    } else {
+    try {
+      const res = await axios.get(
+        `/api/girl?email=${data.email}&token=${token}`
+      ) // Validate the email registered
+      // console.log(res.data.data)
+      if (!res.data.data) {
+        uploadToServer(data)
+      } else {
+        setLoading(false)
+        setMessage('El correo electrónico ya está registrado.')
+      }
+    } catch (error) {
+      console.log(error)
       setLoading(false)
-      setMessage('El correo electrónico ya está registrado.')
+      setMessage('Inténtelo de nuevo más tarde Algo sucedió.')
     }
   }
 
@@ -259,6 +277,15 @@ export default function RegistrationForm() {
     setFilesUploaded(newListUploaded)
   }
 
+  const onReCAPTCHAChange = (captchaCode) => {
+    // console.log('captchaCode')
+    // console.log(captchaCode)
+    if (!captchaCode) {
+      return
+    }
+    recaptchaRef.current.reset()
+  }
+
   return (
     <>
       {loading ? (
@@ -395,7 +422,7 @@ export default function RegistrationForm() {
                   </span>
                 )}
               </div>
-              <div className={styles.field}>
+              {/* <div className={styles.field}>
                 <label htmlFor='social_network'>
                   Redes sociales <span>(Mínimos 5k seguidores)</span>
                 </label>
@@ -409,7 +436,7 @@ export default function RegistrationForm() {
                   *Este espacio solo será diligenciado por quienes participan
                   como influenciadoras
                 </aside>
-              </div>
+              </div> */}
               <div
                 className={`${styles.field} ${styles.photo} ${styles.required}`}
               >
@@ -550,6 +577,12 @@ export default function RegistrationForm() {
                   </span>
                 )}
               </div>
+              <ReCAPTCHA
+                ref={recaptchaRef}
+                size='invisible'
+                sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+                onChange={onReCAPTCHAChange}
+              />
               <div className={styles.field_btn}>
                 <button className={styles.btn}>Enviar</button>
               </div>

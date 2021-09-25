@@ -1,6 +1,23 @@
 import dbConnect from '../../lib/dbConnect'
 import Girl from '../../models/Girl'
+import axios from 'axios'
 // import fs from 'fs'
+
+async function validateHuman(token) {
+  const secret = process.env.RECAPTCHA_SECRET_KEY
+  try {
+    const response = await axios.post(
+      `https://www.google.com/recaptcha/api/siteverify?secret=${secret}&response=${token}`
+    )
+    // const captchaValidation = await response.json()
+
+    // console.log(response, 'captcha validate')
+
+    return response.data.success
+  } catch (error) {
+    console.log(error)
+  }
+}
 
 export default async (req, res) => {
   // res.statusCode = 200
@@ -9,7 +26,7 @@ export default async (req, res) => {
 
   // POST api/girl
   const { method } = req
-  const { email } = req.query
+  const { email, token } = req.query
   switch (method) {
     case 'POST':
       try {
@@ -25,6 +42,13 @@ export default async (req, res) => {
     case 'GET':
       try {
         // console.log(params)
+        const human = await validateHuman(token)
+        if (!human) {
+          return res
+            .status(400)
+            .json({ success: false, message: 'human error' })
+        }
+
         let girl = await Girl.findOne({ email })
         // console.log(girl)
         if (girl) {
