@@ -58,9 +58,9 @@ async function getData() {
   const month = dateObj.getUTCMonth() + 1 //months from 1-12
   const day = dateObj.getUTCDate()
   const year = dateObj.getUTCFullYear()
-
+  // This is path for production
   await writeFile(
-    `./girls-${day}-${month}-${year}.txt`,
+    `/home/qhubocucutalog/chicaqhubofiles/girls-${day}-${month}-${year}.txt`,
     dataGirls.toString().replaceAll(',', '')
   )
   // console.log(data)

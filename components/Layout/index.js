@@ -35,7 +35,7 @@ export default function Layout({ children }) {
         <meta
           key='twitter:description'
           name='twitter:description'
-          content='Qhubo Cucuta es el medio de noticias populares lider en Norte de Santander'
+          content='Qhubo Cúcuta es el medio de noticias populares lider en Norte de Santander'
         />
         <meta
           key='twitter:url'
@@ -60,7 +60,7 @@ export default function Layout({ children }) {
         <meta
           key='og:description'
           property='og:description'
-          content='Qhubo Cucuta es el medio de noticias populares lider en Norte de Santander'
+          content='Qhubo Cúcuta es el medio de noticias populares lider en Norte de Santander'
         />
         <meta
           key='og:image'
