@@ -50,6 +50,39 @@ function App({ Component, pageProps }) {
           `,
         }}
       />
+
+      <Script
+        type='application/ld+json'
+        dangerouslySetInnerHTML={{
+          __html: `{
+                "@context": "http://schema.org",
+                "@type": "BlogPosting",
+                "mainEntityOfPage": {
+                  "@type": "WebPage",
+                  "@id": "https://qhubocucuta.com/chicaqhubo"
+                },
+                "headline": "Qhubo Cúcuta. Chica Qhubo",
+                "image": [
+                  "https://qhubocucuta.com/default.png"
+                ],
+                "datePublished": "Lun, 27/09/2021 - 04:00",
+                "dateModified": "Lun, 27/09/2021 - 06:29",
+                "author": {
+                  "@type": "Person",
+                  "name": "Diario La Opinión"
+                },
+                "publisher": {
+                  "@type": "Organization",
+                  "name": "La Opinión",
+                  "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://qhubocucuta.com/default.png"
+                  }
+                },
+                "description": "Qhubo Cucuta es el medio de noticias populares lider en Norte de Santander"
+              }`,
+        }}
+      />
       <Component {...pageProps} />
     </>
   )

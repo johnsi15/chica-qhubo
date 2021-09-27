@@ -31,7 +31,6 @@ const GirlSchema = new mongoose.Schema({
       'Formato invalido de correo electrónico',
     ],
     required: [true, 'Por favor ingrese un correo electrónico'],
-    unique: true,
   },
   phone: {
     type: String,

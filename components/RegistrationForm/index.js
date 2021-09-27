@@ -38,22 +38,23 @@ export default function RegistrationForm() {
     // console.log('token')
     // console.log(token)
     setLoading(true)
-    try {
-      const res = await axios.get(
-        `/api/girl?email=${data.email}&token=${token}`
-      ) // Validate the email registered
-      // console.log(res.data.data)
-      if (!res.data.data) {
-        uploadToServer(data, token)
-      } else {
-        setLoading(false)
-        setMessage('El correo electrónico ya está registrado.')
-      }
-    } catch (error) {
-      console.log(error)
-      setLoading(false)
-      setMessage('Inténtelo de nuevo más tarde Algo sucedió.')
-    }
+    uploadToServer(data, token)
+    // try {
+    //   const res = await axios.get(
+    //     `/api/girl?email=${data.email}&token=${token}`
+    //   ) // Validate the email registered
+    //   // console.log(res.data.data)
+    //   if (!res.data.data) {
+    //     uploadToServer(data, token)
+    //   } else {
+    //     setLoading(false)
+    //     setMessage('El correo electrónico ya está registrado.')
+    //   }
+    // } catch (error) {
+    //   console.log(error)
+    //   setLoading(false)
+    //   setMessage('Inténtelo de nuevo más tarde Algo sucedió.')
+    // }
   }
 
   const uploadToServer = async (data, token) => {
@@ -141,7 +142,7 @@ export default function RegistrationForm() {
           setLoading(false)
           setFilesUploaded([])
           setImage([])
-          setMessage('Gracias por participar.')
+          setMessage('¡Has completado tu registro! Gracias por participar.')
 
           setValue('names', '')
           setValue('lastname', '')
@@ -309,7 +310,17 @@ export default function RegistrationForm() {
         </div>
       ) : (
         <>
-          <h2 className={styles.title}>Regístrate aquí</h2>
+          <h2
+            className={`${styles.title} ${
+              message.length > 0 ? styles.hidden : ''
+            }`}
+          >
+            Regístrate aquí
+            <span>
+              Por favor verifica que tus datos sean correctos antes de
+              enviarlos.
+            </span>
+          </h2>
           {message.length > 0 ? (
             <p className={styles.message}>{message}</p>
           ) : (
@@ -460,7 +471,7 @@ export default function RegistrationForm() {
                           })
 
                           if (!error) {
-                            return 'Formatos permitidos de las fotos jpg o png.'
+                            return 'El formato no es apto. Recuerda que solo se permiten formatos jpg o png.'
                           } else {
                             return true
                           }
@@ -474,7 +485,7 @@ export default function RegistrationForm() {
                           })
 
                           if (!error) {
-                            return 'Una de las fotos es demasaido pesada Max 5Mb por foto.'
+                            return 'Alguna de tus fotos tiene un peso mayor a 2Mb.'
                           } else {
                             return true
                           }

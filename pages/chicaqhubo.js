@@ -3,8 +3,8 @@ import Layout from '../components/Layout'
 import RegistrationForm from '../components/RegistrationForm'
 import styles from '../styles/Home.module.css'
 
-import dbConnect from '../lib/dbConnect'
-import Girl from '../models/Girl'
+// import dbConnect from '../lib/dbConnect'
+// import Girl from '../models/Girl'
 
 function getDateHuman(unixTimestamp) {
   // const unixTimestamp = 1575909015
@@ -29,7 +29,7 @@ function getDateHuman(unixTimestamp) {
   return dateHuman
 }
 
-export default function Home({ girls }) {
+export default function Home() {
   return (
     <>
       <Layout>
@@ -100,6 +100,11 @@ export default function Home({ girls }) {
                   siguiente a su elección, se procederá a elegir a otra
                   participante en su lugar.
                 </li>
+                <li>
+                  11. Si tuviste un error al diligenciar el formulario vuelve a
+                  ingresar tus datos. Ten en cuenta que el registro más reciente
+                  será el seleccionado.
+                </li>
               </ul>
             </div>
             <div className={styles.recibe}>
@@ -123,12 +128,6 @@ export default function Home({ girls }) {
                 </li>
               </ul>
             </div>
-            {girls.map((girl) => (
-              <p className={styles.girl} key={girl._id}>
-                {girl.names}
-                {girl?.create_date && girl.create_date}
-              </p>
-            ))}
           </div>
         </div>
       </Layout>
@@ -137,18 +136,18 @@ export default function Home({ girls }) {
 }
 
 /* Retrieves pet(s) data from mongodb database */
-export async function getServerSideProps() {
-  await dbConnect()
+// export async function getServerSideProps() {
+//   await dbConnect()
 
-  /* find all the data in our database */
-  const result = await Girl.find({})
-  const girls = result.map((doc) => {
-    const girl = doc.toObject()
-    girl._id = girl._id.toString()
-    return girl
-  })
+//   /* find all the data in our database */
+//   const result = await Girl.find({})
+//   const girls = result.map((doc) => {
+//     const girl = doc.toObject()
+//     girl._id = girl._id.toString()
+//     return girl
+//   })
 
-  const data = JSON.parse(JSON.stringify(girls))
+//   const data = JSON.parse(JSON.stringify(girls))
 
-  return { props: { girls: data } }
-}
+//   return { props: { girls: data } }
+// }
