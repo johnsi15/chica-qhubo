@@ -6,7 +6,7 @@ export default function Layout({ children }) {
     <>
       <Head>
         <title>Qhubo Cúcuta. Chica Qhubo</title>
-        <link rel='icon' href='/favicon.ico' />
+        <link rel='icon' href='/favicon_2.ico' />
         <meta
           name='viewport'
           content='width=device-width, initial-scale=1,minimum-scale=1, maximum-scale=5'
