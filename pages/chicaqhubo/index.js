@@ -1,7 +1,7 @@
 import Image from 'next/image'
-import Layout from '../components/Layout'
-import RegistrationForm from '../components/RegistrationForm'
-import styles from '../styles/Home.module.css'
+import Layout from '../../components/Layout'
+import RegistrationForm from '../../components/RegistrationForm'
+import styles from '../../styles/Home.module.css'
 
 // import dbConnect from '../lib/dbConnect'
 // import Girl from '../models/Girl'
