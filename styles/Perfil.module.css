@@ -88,6 +88,7 @@
 .content_galery{
   display: flex;
   margin-left: 10%;
+  column-gap: 20px;
   justify-content: center;
   width: 80%;  
 }
