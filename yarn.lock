@@ -134,6 +134,18 @@
   dependencies:
     "@napi-rs/triples" "^1.0.3"
 
+"@splidejs/react-splide@^0.5.3":
+  version "0.5.3"
+  resolved "https://registry.yarnpkg.com/@splidejs/react-splide/-/react-splide-0.5.3.tgz#d60477ede6ea018a33b88300599f8d4d1f542206"
+  integrity sha512-HptH1xLmIZ7nRUp0rCZTm7YQfVsrV3d78pMVN994E0tc0trBclu0MX1EMG47GNETf/T2rOiQMU4r9mkMRZ1veg==
+  dependencies:
+    "@splidejs/splide" "^3.1.6"
+
+"@splidejs/splide@^3.1.6":
+  version "3.1.6"
+  resolved "https://registry.yarnpkg.com/@splidejs/splide/-/splide-3.1.6.tgz#da3378c8423e6a5d4e1760868ba9620912597f14"
+  integrity sha512-PkFAfCj/ADKTBzy/9CGrbtiPuEezTVFV0RZ8J/5qWIs7oSAbnUUtPcTY1/2nsCdAZq8XNDjs6ITjLyrot9s0Ow==
+
 "@types/node@*":
   version "16.7.10"
   resolved "https://registry.npmjs.org/@types/node/-/node-16.7.10.tgz"

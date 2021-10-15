@@ -105,6 +105,7 @@
 
 .image {
   display: block;
+  cursor: pointer;
   height: 214px;
   width: 214px;
 }

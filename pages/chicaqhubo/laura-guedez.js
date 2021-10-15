@@ -1,8 +1,20 @@
 import Image from 'next/image'
-import styles from '../../styles/Perfil.module.css'
+import { useState } from 'react'
+import { Splide, SplideSlide } from '@splidejs/react-splide'
 import Layout from '../../components/Layout'
+import Modal from '../../components/Modal'
+import styles from '../../styles/Perfil.module.css'
+import '@splidejs/splide/dist/css/splide.min.css'
 
 export default function mostrar_perfil() {
+  const [showModal, setShowModal] = useState(false)
+  const [startSlide, setStartSlide] = useState(0)
+
+  const handleClick = (index) => {
+    setStartSlide(index)
+    setShowModal(true)
+  }
+
   return (
     <>
       <Layout>
@@ -64,10 +76,56 @@ export default function mostrar_perfil() {
                 </p>
               </div>
             </div>
+            {/* <button onClick={() => handleClick()}>Open Modal</button> */}
+            <Modal onClose={() => setShowModal(false)} show={showModal}>
+              <Splide
+                options={{
+                  type: 'loop',
+                  start: startSlide,
+                }}
+              >
+                <SplideSlide>
+                  <Image
+                    src='/galeria-1.png'
+                    alt='Laura Guedez'
+                    layout='responsive'
+                    width={492}
+                    height={739}
+                  />
+                </SplideSlide>
+                <SplideSlide>
+                  <Image
+                    src='/galeria-1.png'
+                    alt='Laura Guedez'
+                    layout='responsive'
+                    width={492}
+                    height={739}
+                  />
+                </SplideSlide>
+                <SplideSlide>
+                  <Image
+                    src='/galeria-1.png'
+                    alt='Laura Guedez'
+                    layout='responsive'
+                    width={492}
+                    height={739}
+                  />
+                </SplideSlide>
+                <SplideSlide>
+                  <Image
+                    src='/galeria-1.png'
+                    alt='Laura Guedez'
+                    layout='responsive'
+                    width={492}
+                    height={739}
+                  />
+                </SplideSlide>
+              </Splide>
+            </Modal>
             <div className={styles.block_galery}>
               <h3>Galería</h3>
               <div className={styles.content_galery}>
-                <div className={styles.image}>
+                <div className={styles.image} onClick={() => handleClick(0)}>
                   <Image
                     src='/galeria-1.png'
                     alt='Laura Guedez'
@@ -76,7 +134,7 @@ export default function mostrar_perfil() {
                     height={214}
                   />
                 </div>
-                <div className={styles.image}>
+                <div className={styles.image} onClick={() => handleClick(1)}>
                   <Image
                     src='/galeria-1.png'
                     alt='Laura Guedez'
@@ -85,7 +143,7 @@ export default function mostrar_perfil() {
                     height={214}
                   />
                 </div>
-                <div className={styles.image}>
+                <div className={styles.image} onClick={() => handleClick(2)}>
                   <Image
                     src='/galeria-1.png'
                     alt='Laura Guedez'
@@ -94,7 +152,7 @@ export default function mostrar_perfil() {
                     height={214}
                   />
                 </div>
-                <div className={styles.image}>
+                <div className={styles.image} onClick={() => handleClick(3)}>
                   <Image
                     src='/galeria-1.png'
                     alt='Laura Guedez'
