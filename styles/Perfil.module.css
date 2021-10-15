@@ -5,179 +5,195 @@
   background-color: #070707;
 }
 
+.content {
+  margin: 0 auto;
+  width: 1000px;
+}
+
 .logo {
-  margin: 0px 20% 35px;
-  padding-top: 46px;
+  padding-top: 50px;
 }
 
-.block_title{
+.block_title {
   display: flex;
+  justify-content: space-between;
+  margin: 20px 0 57px;
+  align-items: flex-end;
 }
 
-.title{
+/* .title {
   width: 70%;
-}
+} */
 
-.title h3{
-  text-align: left;
-  padding-left: 29%;
-  font-size: 53px;
+.title h3 {
+  font-size: 41px;
+  line-height: 53px;
+  font-weight: 700;
   letter-spacing: 0px;
-  color: #FFFFFF;
-  opacity: 1;  
+  color: #ffffff;
+  opacity: 1;
+  margin: 0;
 }
 
-.patrocinio{
+/* .patrocinio {
   width: 30%;
-}
+} */
 
-.patrocinio p{  
+.patrocinio p {
   text-align: left;
-  font: italic normal normal 16px/20px PT Sans;
+  font-size: 16px;
+  font-style: italic;
+  margin: 0 0 5px;
   letter-spacing: 0px;
-  color: #B8B8B8;
+  color: #b8b8b8;
   opacity: 1;
 }
 
-.block_content{
-  display: flex;  
-  height: 100%;
-  padding-left: 21%;
+.block_content {
+  display: grid;
+  grid-template-columns: 286px 1fr;
   margin-top: 20px;
+  column-gap: 40px;
 }
 
-.content_img{
+.content_img {
   width: 30%;
 }
 
-.content_info{
+/* .content_info {
   width: 49%;
+} */
+
+.content_image {
+  width: 286px;
 }
 
-.block_content h5{
-  margin-left: 75px;
-  margin-top: 5px;
+.block_content h5 {
+  margin: 5px 0 23px;
   font-size: 30px;
   text-align: left;
   letter-spacing: 0px;
-  color: #FFFFFF;
+  color: #ffffff;
   opacity: 1;
 }
 
-.block_content p{
-  margin-left: 75px;
+.block_content p {
   margin-top: 5px;
   font-size: 24px;
   letter-spacing: 1px;
-  color: #FFFFFF;
+  color: #ffffff;
   opacity: 1;
   line-height: 26px;
 }
 
-.block_galery{
-  padding-bottom: 45px;
+.block_galery {
+  padding-bottom: 60px;
 }
 
-.block_galery h3{
-  color: #FFFFFF;
+.block_galery h3 {
+  color: #ffffff;
   font-size: 41px;
   text-align: center;
   margin-top: 35px;
 }
 
-.content_galery{
+.content_galery {
   display: flex;
-  margin-left: 10%;
-  column-gap: 20px;
-  justify-content: center;
-  width: 80%;  
+  column-gap: 30px;
+  justify-content: space-between;
 }
 
-.image{
+.image {
   display: flex;
   justify-content: center;
-  width: 20%;
 }
 
-.image img{
+.image img {
   transition: all 300ms ease;
 }
 
-.image img:hover{
+.image img:hover {
   transform: scale(1.2);
 }
 
 @media screen and (max-width: 768px) {
+  .content {
+    width: 90%;
+  }
   .logo {
     margin: 0px;
     display: flex;
     justify-content: center;
   }
-  .block_title{
+  .block_title {
     display: flex;
     flex-wrap: wrap;
     margin-top: 20px;
-  }  
-  .title{
+    margin-bottom: 0;
+  }
+  .content_image {
     width: 100%;
-  }  
-  .title h3{
+  }
+  .title {
+    width: 100%;
+  }
+  .title h3 {
     text-align: center;
     padding-left: 0%;
     font-size: 36px;
-    margin-top: 0px;   
-  }  
-  .patrocinio{
+    margin-top: 0px;
+  }
+  .patrocinio {
     width: 100%;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-  }  
-  .patrocinio p{  
-    text-align: center;
-    width: 100%;    
+    margin-top: 30px;
   }
-  .img_patrocinio{
+  .patrocinio p {
+    text-align: center;
+    width: 100%;
+  }
+  .img_patrocinio {
     width: 100%;
     display: flex;
-    justify-content: center;    
-  }
-  .block_content{
-    flex-wrap: wrap;
-    padding-left: 0%;
     justify-content: center;
-    margin-top: 50px;
-  }  
-  .content_img{
+  }
+  .block_content {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    margin-top: 30px;
+  }
+  .content_img {
     width: 100%;
-  }  
-  .content_info{
-    width: 75%;
-    margin-top: 35px;    
-  }  
-  .block_content h5{
-    margin-left: 0px;
-    margin-top: 5px;
-    font-size: 30px;
+  }
+  .content_info {
+    margin-top: 35px;
+  }
+  .block_content h5 {
     text-align: center;
-    margin-bottom: 20px;    
-  }  
-  .block_content p{
-    margin-left: 0px;
+    margin-bottom: 20px;
+  }
+  .block_content p {
     margin-top: 5px;
-    font-size: 20px;    
+    font-size: 20px;
   }
-  .content_galery{
-    flex-wrap: wrap;
-    column-gap: 0px; 
+  .content_galery {
+    display: grid;
+    grid-template-columns: repeat(2, 155px);
+    gap: 15px 10px;
   }
-  .block_galery h3{
+  .block_galery h3 {
     margin-bottom: 10px;
-  }  
-  .image{
+  }
+  .image {
+    width: 100%;
+    display: block;
+  }
+  /* .image {
     margin-left: 4%;
     margin-right: 4%;
     margin-top: 5%;
     width: 42%;
-  } 
+  } */
 }
