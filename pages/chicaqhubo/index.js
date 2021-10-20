@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import Layout from '../../components/Layout'
 import RegistrationForm from '../../components/RegistrationForm'
 import styles from '../../styles/Home.module.css'
@@ -34,13 +35,21 @@ export default function Home() {
     <>
       <Layout>
         <div className={styles.background}>
-          <div className={styles.logo}>
-            <Image
-              src='/logo-chica-qhubo.svg'
-              alt='Chica Qhubo'
-              width={247}
-              height={135}
-            />
+          <div className={styles.header}>
+            <div className={styles.logo}>
+              <Image
+                src='/logo-chica-qhubo.svg'
+                alt='Chica Qhubo'
+                width={247}
+                height={135}
+              />
+            </div>
+
+            <h3 className={styles.profile}>
+              <Link href='/chicaqhubo/liseth-maldonado'>
+                <a>Ver la Chica Q'hubo del día</a>
+              </Link>
+            </h3>
           </div>
           <div className={styles.container}>
             <RegistrationForm />

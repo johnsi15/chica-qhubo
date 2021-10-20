@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import { useState } from 'react'
 import { Splide, SplideSlide } from '@splidejs/react-splide'
 import Layout from '../../components/Layout'
@@ -20,14 +21,18 @@ export default function ProfileOne() {
       <Layout>
         <section className={styles.background}>
           <div className={styles.content}>
-            <div className={styles.logo}>
-              <Image
-                src='/logo-chica-qhubo.svg'
-                alt='Chica Qhubo'
-                width={247}
-                height={135}
-              />
-            </div>
+            <Link href='/chicaqhubo'>
+              <a>
+                <div className={styles.logo}>
+                  <Image
+                    src='/logo-chica-qhubo.svg'
+                    alt='Chica Qhubo'
+                    width={247}
+                    height={135}
+                  />
+                </div>
+              </a>
+            </Link>
             <div className={styles.block_title}>
               <div className={styles.title}>
                 <h3>Chica Q'hubo del día</h3>
