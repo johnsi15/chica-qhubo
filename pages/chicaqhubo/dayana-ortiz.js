@@ -80,7 +80,7 @@ export default function ProfileOne() {
               >
                 <SplideSlide>
                   <Image
-                    src='/dayana-ortiz/foto-1.png'
+                    src='/dayana-ortiz/c1.png'
                     alt='Nasly Dayana'
                     layout='responsive'
                     width={492}
@@ -89,7 +89,7 @@ export default function ProfileOne() {
                 </SplideSlide>
                 <SplideSlide>
                   <Image
-                    src='/dayana-ortiz/foto-2.png'
+                    src='/dayana-ortiz/c2.png'
                     alt='Nasly Dayana'
                     layout='responsive'
                     width={492}
@@ -98,7 +98,7 @@ export default function ProfileOne() {
                 </SplideSlide>
                 <SplideSlide>
                   <Image
-                    src='/dayana-ortiz/foto-3.png'
+                    src='/dayana-ortiz/c3.png'
                     alt='Nasly Dayana'
                     layout='responsive'
                     width={492}
@@ -107,7 +107,7 @@ export default function ProfileOne() {
                 </SplideSlide>
                 <SplideSlide>
                   <Image
-                    src='/dayana-ortiz/foto-5.png'
+                    src='/dayana-ortiz/c5.png'
                     alt='Nasly Dayana'
                     layout='responsive'
                     width={492}
