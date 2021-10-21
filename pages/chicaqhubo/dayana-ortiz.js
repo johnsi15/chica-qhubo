@@ -122,7 +122,7 @@ export default function ProfileOne() {
                 <div className={styles.image} onClick={() => handleClick(0)}>
                   <Image
                     src='/dayana-ortiz/miniatura-1.png'
-                    alt='Liseth Catalina'
+                    alt='Nasly Dayana'
                     layout='responsive'
                     width={214}
                     height={214}
@@ -131,7 +131,7 @@ export default function ProfileOne() {
                 <div className={styles.image} onClick={() => handleClick(1)}>
                   <Image
                     src='/dayana-ortiz/miniatura-2.png'
-                    alt='Liseth Catalina'
+                    alt='Nasly Dayana'
                     layout='responsive'
                     width={214}
                     height={214}
@@ -140,7 +140,7 @@ export default function ProfileOne() {
                 <div className={styles.image} onClick={() => handleClick(2)}>
                   <Image
                     src='/dayana-ortiz/miniatura-3.png'
-                    alt='Liseth Catalina'
+                    alt='Nasly Dayana'
                     layout='responsive'
                     width={214}
                     height={214}
@@ -149,7 +149,7 @@ export default function ProfileOne() {
                 <div className={styles.image} onClick={() => handleClick(3)}>
                   <Image
                     src='/dayana-ortiz/miniatura-5.png'
-                    alt='Liseth Catalina'
+                    alt='Nasly Dayana'
                     layout='responsive'
                     width={214}
                     height={214}
