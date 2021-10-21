@@ -46,7 +46,7 @@ export default function Home() {
             </div>
 
             <h3 className={styles.profile}>
-              <Link href='/chicaqhubo/liseth-maldonado'>
+              <Link href='/chicaqhubo/dayana-ortiz'>
                 <a>Ver la Chica Q'hubo del día</a>
               </Link>
             </h3>
