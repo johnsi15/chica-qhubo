@@ -52,7 +52,7 @@ export default function ProfileOne() {
             <div className={styles.block_content}>
               <div className={styles.content_image}>
                 <Image
-                  src='/dayana-ortiz/principal.png'
+                  src='/dayana-ortiz/c2.png'
                   alt='Nasly Dayana'
                   layout='responsive'
                   width={286}
@@ -89,7 +89,7 @@ export default function ProfileOne() {
                 </SplideSlide>
                 <SplideSlide>
                   <Image
-                    src='/dayana-ortiz/c2.png'
+                    src='/dayana-ortiz/c3.png'
                     alt='Nasly Dayana'
                     layout='responsive'
                     width={492}
@@ -98,7 +98,7 @@ export default function ProfileOne() {
                 </SplideSlide>
                 <SplideSlide>
                   <Image
-                    src='/dayana-ortiz/c3.png'
+                    src='/dayana-ortiz/c4.png'
                     alt='Nasly Dayana'
                     layout='responsive'
                     width={492}
@@ -130,7 +130,7 @@ export default function ProfileOne() {
                 </div>
                 <div className={styles.image} onClick={() => handleClick(1)}>
                   <Image
-                    src='/dayana-ortiz/miniatura-2.png'
+                    src='/dayana-ortiz/miniatura-3.png'
                     alt='Nasly Dayana'
                     layout='responsive'
                     width={214}
@@ -139,7 +139,7 @@ export default function ProfileOne() {
                 </div>
                 <div className={styles.image} onClick={() => handleClick(2)}>
                   <Image
-                    src='/dayana-ortiz/miniatura-3.png'
+                    src='/dayana-ortiz/miniatura-4.png'
                     alt='Nasly Dayana'
                     layout='responsive'
                     width={214}
