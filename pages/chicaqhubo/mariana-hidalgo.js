@@ -52,7 +52,7 @@ export default function ProfileOne() {
             <div className={styles.block_content}>
               <div className={styles.content_image}>
                 <Image
-                  src='/mariana-hidalgo/principal.png'
+                  src='/mariana-hidalgo/foto-1.png'
                   alt='Mariana Hidalgo'
                   layout='responsive'
                   width={286}
