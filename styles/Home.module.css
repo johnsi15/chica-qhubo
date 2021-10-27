@@ -127,6 +127,67 @@
   padding-bottom: 20px;
 }
 
+/* Estilos page perfiles */
+
+.container_perfiles{
+  width: 1000px;
+  margin: 0 auto;
+}
+
+.title_perfiles h3{
+  text-align: center;  
+  font-size: 41px;
+  letter-spacing: 0px;
+  font-style: normal;
+  color: #FFFFFF;
+  opacity: 1;
+  text-align: left;
+}
+
+.letras_buscador{
+  display: flex;
+  justify-content: center;
+  column-gap: 10px;
+}
+
+.letras_buscador button{
+  border: 2px solid #CBAA07;
+  border-radius: 7px;
+  opacity: 1;
+  background-color: #000000;
+  color: #CBAA07;
+  width: 36px;
+  height: 36px;
+  font-size: 22px;
+}
+
+.letras_buscador button:hover{
+  background-color: #CBAA07;
+  color: #000000;
+  border: 2px solid #000000;
+}
+
+.conten_perfiles{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  column-gap: 30px;
+  margin-top: 50px;
+}
+
+.perfil{
+  width: 214px;
+}
+
+.conten_perfiles h3{
+  text-align: center; 
+  letter-spacing: 0px;
+  color: #FFFFFF;
+  opacity: 1;
+  font-size: 27px;
+  font-style: normal;
+}
+
 @media screen and (max-width: 768px) {
   .header {
     width: 100%;
