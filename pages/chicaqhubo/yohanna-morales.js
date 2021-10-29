@@ -52,7 +52,7 @@ export default function ProfileOne() {
             <div className={styles.block_content}>
               <div className={styles.content_image}>
                 <Image
-                  src='/yohanna-morales/foto-9.jpg'
+                  src='/yohanna-morales/principal.png'
                   alt='Yohanna Morales'
                   layout='responsive'
                   width={286}
