@@ -3,7 +3,6 @@ import Link from 'next/link'
 import Layout from '../../components/Layout'
 import styles from '../../styles/Home.module.css'
 
-
 export default function Perfiles() {
   return (
     <>
@@ -30,7 +29,7 @@ export default function Perfiles() {
                 <h3>Chica Q'Hubo del Día</h3>
             </div>
             <div className={styles.letras_buscador}>
-                <button>A</button>
+                <button onClick={myfunction}>A</button>
                 <button>B</button>
                 <button>C</button>
                 <button>D</button>
@@ -119,9 +118,21 @@ export default function Perfiles() {
                 </div> 
             </div>
           </div>
-        </div>
+        </div>    
+
       </Layout>
     </>
   )
+  
 }
+
+function myfunction() {
+  console.log("Hello World");
+} 
+
+
+
+
+
+
 
