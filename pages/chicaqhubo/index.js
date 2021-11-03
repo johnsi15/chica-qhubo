@@ -21,11 +21,18 @@ export default function Perfiles() {
                 </div>
               </a>
             </Link>
-            <h3 className={styles.profile}>
-              <Link href='/chicaqhubo/registration'>
-                <a>Inscríbete en Chica Q'hubo</a>
-              </Link>
-            </h3>
+            <div className={styles.botones}>
+              <h3 className={styles.profile}>
+                <Link href='/chicaqhubo/margarita-fuentes'>
+                  <a>Ver la Chica Q'hubo del día</a>
+                </Link>
+              </h3>
+              <h3 className={styles.profile}>
+                <Link href='/chicaqhubo/registration'>
+                  <a>Inscríbete en Chica Q'hubo</a>
+                </Link>
+              </h3>
+            </div>
           </div>
           <div className={styles.container_perfiles}>
             
@@ -74,6 +81,18 @@ export default function Perfiles() {
                     <h3>Liseth Maldonado</h3>
                 </div>
               </Link>
+              <Link href='/chicaqhubo/margarita-fuentes'> 
+                <div className={styles.perfil}>
+                    <Image
+                        src='/margarita-fuentes/c5.png'
+                        alt='Margarita Fuentes'
+                        layout='responsive'
+                        width={214}
+                        height={214}
+                    />
+                    <h3>Margarita Fuentes</h3>
+                </div>
+                </Link>
               <Link href='/chicaqhubo/mariana-hidalgo'> 
                 <div className={styles.perfil}>
                     <Image
@@ -97,19 +116,7 @@ export default function Perfiles() {
                     />
                     <h3>Yohanna Morales</h3>
                 </div> 
-                </Link>
-                <Link href='/chicaqhubo/mariana-hidalgo'>
-                <div className={styles.perfil}>
-                    <Image
-                        src='/mariana-hidalgo/c4.png'
-                        alt='Mariana Hidalgo'
-                        layout='responsive'
-                        width={214}
-                        height={214}
-                    />
-                    <h3>Mariana Hidalgo</h3>
-                </div> 
-                </Link>               
+                </Link>                              
             </div>
           </div>
         </div>    
