@@ -168,11 +168,11 @@
 }
 
 .conten_perfiles{
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  column-gap: 30px;
-  margin-top: 50px;
+  display: grid;
+  grid-template-columns: repeat(4, 241px);
+  grid-gap: 15px 22px;
+  justify-content: center;
+  margin-top: 25px;
 }
 
 .perfil{
