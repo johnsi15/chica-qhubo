@@ -23,7 +23,7 @@ export default function Perfiles() {
             </Link>
             <div className={styles.botones}>
               <h3 className={styles.profile}>
-                <Link href='/chicaqhubo/marcela-nieves'>
+                <Link href='/chicaqhubo/harly-padilla'>
                   <a>Ver la Chica Q'hubo del día</a>
                 </Link>
               </h3>
@@ -92,7 +92,19 @@ export default function Perfiles() {
                     />
                     <h3>Dayana Ortiz</h3>
                 </div>                
-              </Link> 
+              </Link>
+              <Link href='/chicaqhubo/harly-padilla'>                
+                <div className={styles.perfil}>
+                    <Image
+                        src='/harly-padilla/c2.png'
+                        alt='Harly Padilla'
+                        layout='responsive'
+                        width={214}
+                        height={214}
+                    />
+                    <h3>Harly Padilla</h3>
+                </div>                
+              </Link>  
               <Link href='/chicaqhubo/isabel-burgos'>                
                 <div className={styles.perfil}>
                     <Image
