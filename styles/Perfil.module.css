@@ -98,9 +98,10 @@
 }
 
 .content_galery {
-  display: flex;
-  column-gap: 30px;
+  display: grid;
+  gap: 48px;
   justify-content: space-between;
+  grid-template-columns: repeat(4, 214px);
 }
 
 .image {

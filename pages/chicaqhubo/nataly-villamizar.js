@@ -80,6 +80,42 @@ export default function ProfileOne() {
               >
                 <SplideSlide>
                   <Image
+                    src='/nataly-villamizar/foto-8.png'
+                    alt='Nataly Villamizar'
+                    layout='responsive'
+                    width={492}
+                    height={739}
+                  />
+                </SplideSlide>
+                <SplideSlide>
+                  <Image
+                    src='/nataly-villamizar/foto-1.png'
+                    alt='Nataly Villamizar'
+                    layout='responsive'
+                    width={492}
+                    height={739}
+                  />
+                </SplideSlide>
+                <SplideSlide>
+                  <Image
+                    src='/nataly-villamizar/foto-2.png'
+                    alt='Nataly Villamizar'
+                    layout='responsive'
+                    width={492}
+                    height={739}
+                  />
+                </SplideSlide>
+                <SplideSlide>
+                  <Image
+                    src='/nataly-villamizar/foto-3.png'
+                    alt='Nataly Villamizar'
+                    layout='responsive'
+                    width={492}
+                    height={739}
+                  />
+                </SplideSlide>
+                <SplideSlide>
+                  <Image
                     src='/nataly-villamizar/foto-4.png'
                     alt='Nataly Villamizar'
                     layout='responsive'
@@ -98,7 +134,7 @@ export default function ProfileOne() {
                 </SplideSlide>
                 <SplideSlide>
                   <Image
-                    src='/nataly-villamizar/foto-6.png'
+                    src='/nataly-villamizar/foto-7.png'
                     alt='Nataly Villamizar'
                     layout='responsive'
                     width={492}
@@ -107,7 +143,7 @@ export default function ProfileOne() {
                 </SplideSlide>
                 <SplideSlide>
                   <Image
-                    src='/nataly-villamizar/foto-7.png'
+                    src='/nataly-villamizar/foto-6.png'
                     alt='Nataly Villamizar'
                     layout='responsive'
                     width={492}
@@ -121,7 +157,7 @@ export default function ProfileOne() {
               <div className={styles.content_galery}>
                 <div className={styles.image} onClick={() => handleClick(0)}>
                   <Image
-                    src='/nataly-villamizar/c5.png'
+                    src='/nataly-villamizar/c1.png'
                     alt='Nataly Villamizar'
                     layout='responsive'
                     width={214}
@@ -130,7 +166,7 @@ export default function ProfileOne() {
                 </div>
                 <div className={styles.image} onClick={() => handleClick(1)}>
                   <Image
-                    src='/nataly-villamizar/c6.png'
+                    src='/nataly-villamizar/c2.png'
                     alt='Nataly Villamizar'
                     layout='responsive'
                     width={214}
@@ -139,7 +175,7 @@ export default function ProfileOne() {
                 </div>
                 <div className={styles.image} onClick={() => handleClick(2)}>
                   <Image
-                    src='/nataly-villamizar/c8.png'
+                    src='/nataly-villamizar/c3.png'
                     alt='Nataly Villamizar'
                     layout='responsive'
                     width={214}
@@ -148,7 +184,43 @@ export default function ProfileOne() {
                 </div>
                 <div className={styles.image} onClick={() => handleClick(3)}>
                   <Image
+                    src='/nataly-villamizar/c4.png'
+                    alt='Nataly Villamizar'
+                    layout='responsive'
+                    width={214}
+                    height={214}
+                  />
+                </div>
+                <div className={styles.image} onClick={() => handleClick(4)}>
+                  <Image
+                    src='/nataly-villamizar/c5.png'
+                    alt='Nataly Villamizar'
+                    layout='responsive'
+                    width={214}
+                    height={214}
+                  />
+                </div>
+                <div className={styles.image} onClick={() => handleClick(5)}>
+                  <Image
+                    src='/nataly-villamizar/c6.png'
+                    alt='Nataly Villamizar'
+                    layout='responsive'
+                    width={214}
+                    height={214}
+                  />
+                </div>
+                <div className={styles.image} onClick={() => handleClick(6)}>
+                  <Image
                     src='/nataly-villamizar/c7.png'
+                    alt='Nataly Villamizar'
+                    layout='responsive'
+                    width={214}
+                    height={214}
+                  />
+                </div>
+                <div className={styles.image} onClick={() => handleClick(7)}>
+                  <Image
+                    src='/nataly-villamizar/c8.png'
                     alt='Nataly Villamizar'
                     layout='responsive'
                     width={214}
