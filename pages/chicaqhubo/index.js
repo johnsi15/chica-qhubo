@@ -23,7 +23,7 @@ export default function Perfiles() {
             </Link>
             <div className={styles.botones}>
               <h3 className={styles.profile}>
-                <Link href='/chicaqhubo/nataly-villamizar'>
+                <Link href='/chicaqhubo/alejandra-suarez'>
                   <a>Ver la Chica Q'hubo del día</a>
                 </Link>
               </h3>
@@ -57,6 +57,18 @@ export default function Perfiles() {
                 
             </div>
             <div className={styles.conten_perfiles}>
+            <Link href='/chicaqhubo/alejandra-suarez'>                
+                <div className={styles.perfil}>
+                    <Image
+                        src='/alejandra-suarez/c1.png'
+                        alt='Alejandra Suarez'
+                        layout='responsive'
+                        width={214}
+                        height={214}
+                    />
+                    <h3>Alejandra Suárez</h3>
+                </div>                
+              </Link>
             <Link href='/chicaqhubo/celena-manosalva'>                
                 <div className={styles.perfil}>
                     <Image
