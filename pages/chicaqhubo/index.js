@@ -23,7 +23,7 @@ export default function Perfiles() {
             </Link>
             <div className={styles.botones}>
               <h3 className={styles.profile}>
-                <Link href='/chicaqhubo/lizeth-trujillo'>
+                <Link href='/chicaqhubo/maria-robles'>
                   <a>Ver la Chica Q'hubo del día</a>
                 </Link>
               </h3>
@@ -177,6 +177,18 @@ export default function Perfiles() {
                     <h3>Margarita Fuentes</h3>
                 </div>
                 </Link>
+              <Link href='/chicaqhubo/maria-robles'> 
+              <div className={styles.perfil}>
+                  <Image
+                      src='/maria-robles/c6.png'
+                      alt='María Robles'
+                      layout='responsive'
+                      width={214}
+                      height={214}
+                  />
+                  <h3>María Robles</h3>
+              </div>
+              </Link>
               <Link href='/chicaqhubo/mariana-hidalgo'> 
                 <div className={styles.perfil}>
                     <Image
