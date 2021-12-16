@@ -39,6 +39,10 @@ const ProfileSchema = new mongoose.Schema({
     required: [false, 'Por favor cargue algunas fotos.'],
     type: Array,
   },
+  url: {
+    required: [true, 'Por favor se necesita una url para el perfil.'],
+    type: String,
+  },
 })
 
 export default mongoose.models.Profiles_girl ||

@@ -58,7 +58,7 @@ export default function Perfiles({ girls }) {
 
             <div className={styles.letras_buscador}></div>
 
-            <GridProfile girls={girls} />
+            {girls.length > 0 && <GridProfile girls={girls} />}
           </div>
         </div>
       </Layout>

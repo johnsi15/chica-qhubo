@@ -6,8 +6,8 @@ export default function GridProfile({ girls }) {
   return (
     <>
       <div className={styles.conten_perfiles}>
-        {girls.map(({ _id, name, photo_profile }) => (
-          <Link href='/chicaqhubo/alejandra-suarez' key={_id}>
+        {girls.map(({ _id, name, photo_profile, url }) => (
+          <Link href={url} key={_id}>
             <div className={styles.perfil}>
               <Image
                 src={photo_profile}
