@@ -127,9 +127,9 @@
     width: 90%;
   }
   .logo {
-    margin: 0px;
     display: flex;
     justify-content: center;
+    margin: 0px auto;
   }
   .block_title {
     display: flex;
