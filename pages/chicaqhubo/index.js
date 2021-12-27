@@ -71,7 +71,7 @@ export async function getServerSideProps() {
   await dbConnect()
 
   /* find all the data in our database */
-  const result = await Profile.find({})
+  const result = await Profile.find({}).sort({ name: 1 })
   const girls = result.map((doc) => {
     const girl = doc.toObject()
     girl._id = girl._id.toString()
