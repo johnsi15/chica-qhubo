@@ -50,7 +50,7 @@ export default function Home() {
           </Link>
             <div className={styles.botones}>
               <h3 className={styles.profile}>
-                <Link href='/chicaqhubo/alejandra-perez'>
+                <Link href='/chicaqhubo/mayerlin-paredes'>
                   <a>Ver la Chica Q'hubo del día</a>
                 </Link>
               </h3>
