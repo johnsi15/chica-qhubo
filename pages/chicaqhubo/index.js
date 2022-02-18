@@ -27,7 +27,7 @@ export default function Perfiles({ girls }) {
             </Link>
             <div className={styles.botones}>
               <h3 className={styles.profile}>
-                <Link href='/chicaqhubo/karina-moreno'>
+                <Link href='/chicaqhubo/marguijuliet-mendoza'>
                   <a>Ver la Chica Q'hubo del día</a>
                 </Link>
               </h3>
