@@ -76,7 +76,7 @@ export default function ProfileGirl({
               <div className={styles.content_info}>
                 <h5>{name}</h5>
                 <p>Edad: {age}.</p>
-                <p>Medidas: {measures}.</p>
+                {measures && <p>Medidas: {measures}.</p>}
                 {studies && <p>Estudios: {studies}.</p>}
                 {model_agency && <p>Agencia de modelos: {model_agency}</p>}
                 {project && <p>Proyecto: {project}.</p>}
