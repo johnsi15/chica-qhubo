@@ -4,7 +4,7 @@ import styles from '../styles/Promociones.module.css'
 
 export default function Promociones() {
   return (
-    <Layout>
+    <Layout title='Optativos Qhubo Cúcuta'>
       <section className={styles.background}>
         <div className={styles.header}>
           <Image
@@ -71,12 +71,17 @@ export default function Promociones() {
         </div>
 
         <div className={styles.preguntas}>
-          <Image
-            src='/optativos/wp.png'
-            alt='3168768730'
-            width={254}
-            height={78}
-          />
+          <a
+            href='https://api.whatsapp.com/send/?phone=573168768730&text&app_absent=0'
+            target='_blank'
+          >
+            <Image
+              src='/optativos/wp.png'
+              alt='3168768730'
+              width={254}
+              height={78}
+            />
+          </a>
         </div>
       </section>
     </Layout>
