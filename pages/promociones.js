@@ -15,12 +15,14 @@ export default function Promociones() {
           />
           <div className={styles.container_plancha}>
             <h3>Espectacular Plancha inalámbrica</h3>
+            <div className={styles.plancha}>
             <Image
               src='/optativos/plancha.png'
               alt='Plancha'
               width={337}
               height={337}
             />
+             </div>
           </div>
         </div>
         <div className={styles.ficha_tecnica}>
@@ -39,15 +41,18 @@ export default function Promociones() {
           <Image
             src='/optativos/pasos.svg'
             alt='Pasos'
+            className={styles.texto}
             width={427}
             height={99}
           />
+          <div className={styles.flecha}>
           <Image
             src='/optativos/down.svg'
-            alt='Flecha'
+            alt='Flecha'            
             width={81}
             height={79}
           />
+          </div>
         </div>
 
         <div className={styles.terminos}>
