@@ -5,7 +5,7 @@ export default function Layout({
   children,
   title = 'Qhubo Cúcuta. Chica Qhubo',
 }) {
-  console.log(title)
+  // console.log(title)'
   return (
     <>
       <Head>
