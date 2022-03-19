@@ -129,7 +129,8 @@
     order: 2; 
     font-size: 33px;
     text-align: center;
-    line-height: 34px;      
+    line-height: 34px;
+    margin-top: 0px;      
   }
 
   .container_plancha img{
@@ -139,7 +140,9 @@
   }
 
   .ficha_tecnica {
-    width: 90%;    
+    width: 90%;
+    display: grid;
+    justify-content: center;    
   }
 
   .ficha_tecnica li {    
