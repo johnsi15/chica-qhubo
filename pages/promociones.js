@@ -14,27 +14,31 @@ export default function Promociones() {
             height={416}
           />
           <div className={styles.container_plancha}>
-            <h3>Espectacular Plancha inalámbrica</h3>
+            <h3>Espectacular Picatodo</h3>
             <div className={styles.plancha}>
-            <Image
-              src='/optativos/plancha.png'
-              alt='Plancha'
-              width={337}
-              height={337}
-            />
-             </div>
+              <Image
+                src='/optativos/picatodo.png'
+                alt='Picatodo'
+                width={337}
+                height={337}
+              />
+            </div>
           </div>
         </div>
         <div className={styles.ficha_tecnica}>
           <ul>
-            <li>• Con cable flexible de 360°.</li>
-            <li>• Con indicador de luz.. </li>
+            <li>• Cuchillas de acero inoxidable.</li>
             <li>
-              • Plancha de vapor inalámbrica función de pulverización y control
-              de vapor.
+              • Te facilitará al momento de hacer tus más ricas recetas,
+              obteniendo la consistencia que deseas en tus platos.
             </li>
-            <li>• Función de auto limpieza. </li>
-            <li>• Con control de temperatura ajustable.</li>
+            <li>
+              • Es perfecto para guardar en cualquier parte de la cocina y a la
+              vez tiene toda la potencia necesaria.
+            </li>
+            <li>• Su tamaño es ideal y práctico.</li>
+            <li>• Capacidad: 0.35L - 1.5 cups</li>
+            <li>• Potencia: 100 w</li>
           </ul>
         </div>
         <div className={styles.pasos}>
@@ -46,12 +50,12 @@ export default function Promociones() {
             height={99}
           />
           <div className={styles.flecha}>
-          <Image
-            src='/optativos/down.svg'
-            alt='Flecha'            
-            width={81}
-            height={79}
-          />
+            <Image
+              src='/optativos/down.svg'
+              alt='Flecha'
+              width={81}
+              height={79}
+            />
           </div>
         </div>
 
@@ -61,14 +65,14 @@ export default function Promociones() {
             <li>Recorta los cupones del producto que desees.</li>
             <li>Colecciona 15 cupones.</li>
             <li>
-              Comunicate al 316 876 8730 y con tus cupones +$62.550 recibe el
+              Comunicate al 316 876 8730 y con tus cupones +$46.200 recibe el
               producto en tu domicilio (Vlr del domicilio $10.000) o recorta y
               lleva los cupones a nuestras instalaciones en la Av 4 #16-12 B. La
               playa.
             </li>
             <li>Válido hasta agotar existencias.</li>
             <li>
-              Oferta válida del 22 de marzo al 26 de abril. (Si tienes los
+              Oferta válida del 27 de abril al 18 de mayo. (Si tienes los
               cupones puedes adquirir tu producto hasta el 30 de mayo)
             </li>
             <li>Oferta válida para Norte de Santander.</li>
