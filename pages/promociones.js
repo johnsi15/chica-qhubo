@@ -65,7 +65,7 @@ export default function Promociones() {
             <li>Recorta los cupones del producto que desees.</li>
             <li>Colecciona 15 cupones.</li>
             <li>
-              Comunicate al 316 876 8730 y con tus cupones +$46.200 recibe el
+              Comunicate al 316 876 8730 y con tus cupones +$48.352 recibe el
               producto en tu domicilio (Vlr del domicilio $10.000) o recorta y
               lleva los cupones a nuestras instalaciones en la Av 4 #16-12 B. La
               playa.
