@@ -66,9 +66,9 @@ export default function Promociones() {
             <li>Colecciona 15 cupones.</li>
             <li>
               Comunicate al 316 876 8730 y con tus cupones +$48.352 recibe el
-              producto en tu domicilio (Vlr del domicilio $10.000) o recorta y
-              lleva los cupones a nuestras instalaciones en la Av 4 #16-12 B. La
-              playa.
+              producto en tu domicilio (Vlr del domicilio $6.000 solo Cúcuta) o
+              recorta y lleva los cupones a nuestras instalaciones en la Av 4
+              #16-12 B. La playa.
             </li>
             <li>Válido hasta agotar existencias.</li>
             <li>
