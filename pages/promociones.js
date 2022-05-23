@@ -14,33 +14,30 @@ export default function Promociones() {
             height={416}
           />
           <div className={styles.container_plancha}>
-            <h3>Espectacular Picatodo</h3>
+            <div className={styles.left}>
+              <h3>Portátil Asus X415</h3>
+              <div className={styles.ficha_tecnica}>
+                <ul>
+                  <li>• Intel® Core i3-1115G4</li>
+                  <li>• 8GB de RAM</li>
+                  <li>• 256GB de Disco SSD</li>
+                  <li>• 14 pulgadas</li>
+                  <li>• Pantalla LED</li>
+                  <li>• Windows 11 HOME</li>
+                </ul>
+              </div>
+            </div>
             <div className={styles.plancha}>
               <Image
-                src='/optativos/picatodo.png'
-                alt='Picatodo'
-                width={337}
-                height={337}
+                src='/optativos/laptop.png'
+                alt='Portátil Asus X415'
+                width={424}
+                height={424}
               />
             </div>
           </div>
         </div>
-        <div className={styles.ficha_tecnica}>
-          <ul>
-            <li>• Cuchillas de acero inoxidable.</li>
-            <li>
-              • Te facilitará al momento de hacer tus más ricas recetas,
-              obteniendo la consistencia que deseas en tus platos.
-            </li>
-            <li>
-              • Es perfecto para guardar en cualquier parte de la cocina y a la
-              vez tiene toda la potencia necesaria.
-            </li>
-            <li>• Su tamaño es ideal y práctico.</li>
-            <li>• Capacidad: 0.35L - 1.5 cups</li>
-            <li>• Potencia: 100 w</li>
-          </ul>
-        </div>
+
         <div className={styles.pasos}>
           <Image
             src='/optativos/pasos.svg'
@@ -60,23 +57,39 @@ export default function Promociones() {
         </div>
 
         <div className={styles.terminos}>
-          <ol>
-            <li>Compra el periódico que trae el cupón</li>
-            <li>Recorta los cupones del producto que desees.</li>
-            <li>Colecciona 15 cupones.</li>
-            <li>
-              Comunicate al 316 876 8730 y con tus cupones +$48.352 recibe el
-              producto en tu domicilio (Vlr del domicilio $6.000 solo Cúcuta) o
-              recorta y lleva los cupones a nuestras instalaciones en la Av 4
-              #16-12 B. La playa.
-            </li>
-            <li>Válido hasta agotar existencias.</li>
-            <li>
-              Oferta válida del 27 de abril al 18 de mayo. (Si tienes los
-              cupones puedes adquirir tu producto hasta el 30 de mayo)
-            </li>
-            <li>Oferta válida para Norte de Santander.</li>
-          </ol>
+          <div className={styles.list}>
+            <div className={styles.item}>
+              Compra el periódico que trae el cupón
+            </div>
+            <div className={styles.item}>
+              Recorta los cupones del producto que desees.
+            </div>
+            <div className={styles.item}>
+              Colecciona 20 cupones en cualquier orden.
+            </div>
+            <div className={styles.item}>
+              Cuando completes los 20 cupones insértalos en un sobre de manila.
+              Marca el sobre con los siguientes datos:
+              <p>• Referencia: Concursos Cupones Computador</p>
+              <p>• Nombre completo, Cédula, Dirección, Celular, Email.</p>
+            </div>
+            <div className={styles.item}>
+              Acércate a nuestras oficinas y deposita el sobre en la urna
+              asignada y/o envía el sobre a las oficinas de La Opinión (Av. 4 #
+              16-12 B. La Playa) Oferta válida del 23 de mayo al 30 de junio de
+              2022
+            </div>
+            <div className={styles.item}>
+              Fecha del sorteo: Julio 1 de 2022{' '}
+            </div>
+            <div className={styles.item}>
+              El tiempo límite para la respuesta del ganador es de 20 días, si
+              no se confirma se sorteará nuevamente.
+            </div>
+            <div className={styles.item}>
+              Oferta válida para Norte de Santander.
+            </div>
+          </div>
         </div>
 
         <div className={styles.preguntas}>
