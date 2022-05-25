@@ -76,8 +76,10 @@ export default function Promociones() {
             <div className={styles.item}>
               Acércate a nuestras oficinas y deposita el sobre en la urna
               asignada y/o envía el sobre a las oficinas de La Opinión (Av. 4 #
-              16-12 B. La Playa) Oferta válida del 23 de mayo al 30 de junio de
-              2022
+              16-12 B. La Playa)
+            </div>
+            <div className={styles.item}>
+              Oferta válida del 23 de mayo al 30 de junio de 2022
             </div>
             <div className={styles.item}>
               Fecha del sorteo: Julio 1 de 2022{' '}
