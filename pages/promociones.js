@@ -7,13 +7,23 @@ export default function Promociones() {
     <Layout title='Optativos Qhubo Cúcuta'>
       <section className={styles.background}>
         <div className={styles.header}>
-          <Image
-            src='/optativos/title-cupones.svg'
-            alt='Colecciona los cupones de Qhubo'
-            width={722}
-            height={416}
-          />
-          <div className={styles.container_plancha}>
+          <div className={styles.banner}>
+            <Image
+              src='/optativos/banner.png'
+              alt='Colecciona los cupones de Qhubo'
+              width={1110}
+              height={300}
+            />
+          </div>
+          <div className={styles.bannerMobile}>
+            <Image
+              src='/optativos/banner_m.png'
+              alt='Colecciona los cupones de Qhubo'
+              width={320}
+              height={100}
+            />
+          </div>
+          {/* <div className={styles.container_plancha}>
             <div className={styles.left}>
               <h3>Portátil Asus X415</h3>
               <div className={styles.ficha_tecnica}>
@@ -35,25 +45,25 @@ export default function Promociones() {
                 height={424}
               />
             </div>
-          </div>
+          </div> */}
         </div>
 
         <div className={styles.pasos}>
           <Image
-            src='/optativos/pasos.svg'
+            src='/optativos/pasos2.svg'
             alt='Pasos'
             className={styles.texto}
             width={427}
             height={99}
           />
-          <div className={styles.flecha}>
+          {/* <div className={styles.flecha}>
             <Image
               src='/optativos/down.svg'
               alt='Flecha'
               width={81}
               height={79}
             />
-          </div>
+          </div> */}
         </div>
 
         <div className={styles.terminos}>
@@ -62,31 +72,21 @@ export default function Promociones() {
               Compra el periódico que trae el cupón
             </div>
             <div className={styles.item}>
-              Recorta los cupones del producto que desees.
+              Recorta el cupón que aparecerá todos los días en Q'hubo.
             </div>
             <div className={styles.item}>
               Colecciona 20 cupones en cualquier orden.
             </div>
             <div className={styles.item}>
-              Cuando completes los 20 cupones insértalos en un sobre de manila.
-              Marca el sobre con los siguientes datos:
-              <p>• Referencia: Concursos Cupones Computador</p>
-              <p>• Nombre completo, Cédula, Dirección, Celular, Email.</p>
+              Comunícate al 3168768730 y con tus cupones +$65.900 recibe el
+              producto en tu domicilio (Vlr del domicilio $6.000 solo Cúcuta) o
+              recorta y lleva los cupones a nuestras intalaciones en la Av 4
+              $16-12 B. La Playa.
             </div>
+            <div className={styles.item}>Válido hasta agotar existencias</div>
             <div className={styles.item}>
-              Acércate a nuestras oficinas y deposita el sobre en la urna
-              asignada y/o envía el sobre a las oficinas de La Opinión (Av. 4 #
-              16-12 B. La Playa)
-            </div>
-            <div className={styles.item}>
-              Oferta válida del 23 de mayo al 30 de junio de 2022
-            </div>
-            <div className={styles.item}>
-              Fecha del sorteo: Julio 1 de 2022{' '}
-            </div>
-            <div className={styles.item}>
-              El tiempo límite para la respuesta del ganador es de 20 días, si
-              no se confirma se sorteará nuevamente.
+              Oferta válida del 7 de julio al 7 de agosto. (Si tienes cupones
+              puedes adquirir tu producto hasta el 9 de agosto)
             </div>
             <div className={styles.item}>
               Oferta válida para Norte de Santander.
@@ -100,7 +100,7 @@ export default function Promociones() {
             target='_blank'
           >
             <Image
-              src='/optativos/wp.png'
+              src='/optativos/number.svg'
               alt='3168768730'
               width={254}
               height={78}
