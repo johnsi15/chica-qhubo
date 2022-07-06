@@ -36,21 +36,21 @@ export default function Home() {
       <Layout>
         <div className={styles.background}>
           <div className={styles.header}>
-          <Link href='/chicaqhubo'>
-            <a>
-            <div className={styles.logo}>
-              <Image
-                src='/logo-chica-qhubo.svg'
-                alt='Chica Qhubo'
-                width={247}
-                height={135}
-              />
-            </div>
-            </a>
-          </Link>
+            <Link href='/chicaqhubo'>
+              <a>
+                <div className={styles.logo}>
+                  <Image
+                    src='/logo-chica-qhubo.svg'
+                    alt='Chica Qhubo'
+                    width={247}
+                    height={135}
+                  />
+                </div>
+              </a>
+            </Link>
             <div className={styles.botones}>
               <h3 className={styles.profile}>
-                <Link href='/chicaqhubo/viviana-varela'>
+                <Link href='/chicaqhubo/dayana-escobar'>
                   <a>Ver la Chica Q'hubo del día</a>
                 </Link>
               </h3>
