@@ -131,7 +131,7 @@
   content: counter(item);
   position: absolute;
   /* background: transparent linear-gradient(180deg, #FFC532 17%, #FF9126 44%, #FF6A1E 69%, #FF5118 88%, #FF4917 100%) 0% 0% no-repeat padding-box; */
-  background: #008472;
+  background: #27348b;
   border-radius: 18px;
   opacity: 1;
   width: 35px;

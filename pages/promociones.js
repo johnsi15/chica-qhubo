@@ -9,7 +9,7 @@ export default function Promociones() {
         <div className={styles.header}>
           <div className={styles.banner}>
             <Image
-              src='/optativos/banner.png'
+              src='/optativos/cine-d.png'
               alt='Colecciona los cupones de Qhubo'
               width={1110}
               height={300}
@@ -17,7 +17,7 @@ export default function Promociones() {
           </div>
           <div className={styles.bannerMobile}>
             <Image
-              src='/optativos/banner_m.png'
+              src='/optativos/cine-m.png'
               alt='Colecciona los cupones de Qhubo'
               width={320}
               height={100}
@@ -69,27 +69,27 @@ export default function Promociones() {
         <div className={styles.terminos}>
           <div className={styles.list}>
             <div className={styles.item}>
-              Compra el periódico que trae el cupón
+              Compra el periódico que trae el cupón.
             </div>
             <div className={styles.item}>
-              Recorta el cupón que aparecerá todos los días en Q'hubo.
+              Recorta el cupón que aparecerá todos los días en La Opinión.
             </div>
             <div className={styles.item}>
-              Colecciona 20 cupones en cualquier orden.
+              Colecciona 15 cupones en cualquier orden.
             </div>
             <div className={styles.item}>
-              Comunícate al 3168768730 y con tus cupones +$65.900 recibe el
-              producto en tu domicilio (Vlr del domicilio $6.000 solo Cúcuta) o
-              recorta y lleva los cupones a nuestras intalaciones en la Av 4
-              $16-12 B. La Playa.
+              Lleva los cupones y $31.000 a nuestras instalaciones en la Av 4
+              #16-12 B. La playa.
             </div>
-            <div className={styles.item}>Válido hasta agotar existencias</div>
+            <div className={styles.item}>Válido hasta agotar existencias.</div>
             <div className={styles.item}>
-              Oferta válida del 7 de julio al 7 de agosto. (Si tienes cupones
-              puedes adquirir tu producto hasta el 9 de agosto)
+              Oferta válida del 11 de agosto al 10 de septiembre de 2022.
             </div>
             <div className={styles.item}>
-              Oferta válida para Norte de Santander.
+              Oferta válida para Cúcuta (Norte de Santander).
+            </div>
+            <div className={styles.item}>
+              Las boletas 2D para cine tienen una vigencia de 1 año.
             </div>
           </div>
         </div>
