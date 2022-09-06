@@ -9,7 +9,7 @@ export default function Promociones() {
         <div className={styles.header}>
           <div className={styles.banner}>
             <Image
-              src='/optativos/cine-d.png'
+              src='/optativos/balon-d.png'
               alt='Colecciona los cupones de Qhubo'
               width={1110}
               height={300}
@@ -17,7 +17,7 @@ export default function Promociones() {
           </div>
           <div className={styles.bannerMobile}>
             <Image
-              src='/optativos/cine-m.png'
+              src='/optativos/balon-m.png'
               alt='Colecciona los cupones de Qhubo'
               width={320}
               height={100}
@@ -72,24 +72,23 @@ export default function Promociones() {
               Compra el periódico que trae el cupón.
             </div>
             <div className={styles.item}>
-              Recorta el cupón que aparecerá todos los días en La Opinión.
+              Recorta el cupón que aparecerá todos los días en Q'hubo.
             </div>
             <div className={styles.item}>
-              Colecciona 15 cupones en cualquier orden.
+              Colecciona 20 cupones en cualquier orden.
             </div>
             <div className={styles.item}>
-              Lleva los cupones y $31.000 a nuestras instalaciones en la Av 4
+              Comunícate al 316 876 8730 y con tus cupones +$58.000 recibe el
+              producto en tu domicilio (Vlr del domicilio $6.000 solo Cúcuta) o
+              recorta y lleva los cupones a nuestras instalaciones en la Av 4
               #16-12 B. La playa.
             </div>
             <div className={styles.item}>Válido hasta agotar existencias.</div>
             <div className={styles.item}>
-              Oferta válida del 11 de agosto al 10 de septiembre de 2022.
+              Oferta válida del 11 de septiembre al 17 de noviembre de 2022.
             </div>
             <div className={styles.item}>
               Oferta válida para Cúcuta (Norte de Santander).
-            </div>
-            <div className={styles.item}>
-              Las boletas 2D para cine tienen una vigencia de 1 año.
             </div>
           </div>
         </div>
