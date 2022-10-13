@@ -9,7 +9,7 @@ export default function Promociones() {
         <div className={styles.header}>
           <div className={styles.banner}>
             <Image
-              src='/optativos/balon-d.png'
+              src='/optativos/bg-balon-d.png'
               alt='Colecciona los cupones de Qhubo'
               width={1110}
               height={300}
@@ -17,7 +17,7 @@ export default function Promociones() {
           </div>
           <div className={styles.bannerMobile}>
             <Image
-              src='/optativos/balon-m.png'
+              src='/optativos/bg-balon-m.png'
               alt='Colecciona los cupones de Qhubo'
               width={320}
               height={100}
@@ -75,10 +75,10 @@ export default function Promociones() {
               Recorta el cupón que aparecerá todos los días en Q'hubo.
             </div>
             <div className={styles.item}>
-              Colecciona 20 cupones en cualquier orden.
+              Colecciona 10 cupones en cualquier orden.
             </div>
             <div className={styles.item}>
-              Comunícate al 316 876 8730 y con tus cupones +$58.000 recibe el
+              Comunícate al 316 876 8730 y con tus cupones +$71.000 recibe el
               producto en tu domicilio (Vlr del domicilio $6.000 solo Cúcuta) o
               recorta y lleva los cupones a nuestras instalaciones en la Av 4
               #16-12 B. La playa.
