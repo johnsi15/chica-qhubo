@@ -9,7 +9,7 @@ export default function Promociones() {
         <div className={styles.header}>
           <div className={styles.banner}>
             <Image
-              src='/optativos/navidad_d.png'
+              src='/optativos/bg-morral-d.png'
               alt='Colecciona los cupones de Qhubo'
               width={1110}
               height={300}
@@ -17,7 +17,7 @@ export default function Promociones() {
           </div>
           <div className={styles.bannerMobile}>
             <Image
-              src='/optativos/navidad_m.png'
+              src='/optativos/bg-morral-m.png'
               alt='Colecciona los cupones de Qhubo'
               width={320}
               height={100}
@@ -75,37 +75,26 @@ export default function Promociones() {
               Recorta el cupón que aparecerá todos los días en Q'hubo.
             </div>
             <div className={styles.item}>
-              Colecciona 15 cupones en cualquier orden.
+              Colecciona 10 cupones en cualquier orden.
             </div>
             <div className={styles.item}>
-              Lleva o envía tus cupones dentro de un sobre manila a las
-              instalaciones del diario La Opinión. Av 4 #16-12 B. La playa.
+              Comunícate al 316 876 8730 y con tus cupones +$79.000 recibe el
+              producto en tu domicilio (Vlr del domicilio $6.000 solo Cúcuta) o
+              recorta y lleva los cupones a nuestras instalaciones en la Av 4
+              #16-12 B. La playa.
             </div>
             <div className={styles.item}>
-              El sobre debe estar marcado con la referencia Concurso Ancheta
-              Navideña tu Nombre y Apellido, Número de cédula, Número de
-              celular, email y dirección.
+              Son cinco colores disponibles (Negro, Azul Celeste, Nude , Gris y
+              Verde aguamarina) hasta agotar existencias.
             </div>
             <div className={styles.item}>
-              Oferta válida del 28 de noviembre al 19 de diciembre. Son 3
-              anchetas, 3 ganadores.
+              Oferta válida del Válido del 23 de enero del 2023 al 28 de febrero
+              del 2023.
             </div>
             <div className={styles.item}>
-              El sorteo se hará el 20 de diciembre.
+              Oferta válida para Norte de Santander.
             </div>
-            <div className={styles.item}>
-              Las entregas de las anchetas se harán el 20 y 21 de diciembre en
-              el Diario La Opinión.
-            </div>
-            <div className={styles.item}>
-              Oferta Válida para Cúcuta y Norte de Santander.
-            </div>
-            <div className={styles.item}>
-              Q'hubo no se hace cargo de envíos de los productos.
-            </div>
-            <div className={styles.item}>
-              El premio no será cambiado por dinero en ningún caso.
-            </div>
+            <div className={styles.item}>Aplican términos y condiciones.</div>
           </div>
         </div>
 
