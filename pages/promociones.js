@@ -9,7 +9,7 @@ export default function Promociones() {
         <div className={styles.header}>
           <div className={styles.banner}>
             <Image
-              src='/optativos/bg-morral-d.png'
+              src='/optativos/bg-arroz-d.png'
               alt='Colecciona los cupones de Qhubo'
               width={1110}
               height={300}
@@ -17,7 +17,7 @@ export default function Promociones() {
           </div>
           <div className={styles.bannerMobile}>
             <Image
-              src='/optativos/bg-morral-m.png'
+              src='/optativos/bg-arroz-m.png'
               alt='Colecciona los cupones de Qhubo'
               width={320}
               height={100}
@@ -72,24 +72,24 @@ export default function Promociones() {
               Compra el periódico que trae el cupón.
             </div>
             <div className={styles.item}>
-              Recorta el cupón que aparecerá todos los días en Q'hubo.
+              Recorta el cupón que aparecerá todos los días en tu diario Q’hubo
+              Cúcuta.
             </div>
             <div className={styles.item}>
-              Colecciona 10 cupones en cualquier orden.
+              Colecciona 30 cupones en cualquier orden.
             </div>
             <div className={styles.item}>
-              Comunícate al 316 876 8730 y con tus cupones +$79.000 recibe el
-              producto en tu domicilio (Vlr del domicilio $6.000 solo Cúcuta) o
-              recorta y lleva los cupones a nuestras instalaciones en la Av 4
-              #16-12 B. La playa.
+              Comunícate al 316 876 8730 y con tus cupones +$30.000 recibe tu
+              mini mercado en tu domicilio (Vlr del domicilio $6.000 solo
+              Cúcuta) o recorta y lleva los cupones a nuestras instalaciones en
+              la Av 4 #16-12 B. La playa.
             </div>
             <div className={styles.item}>
-              Son cinco colores disponibles (Negro, Azul Celeste, Nude , Gris y
-              Verde aguamarina) hasta agotar existencias.
+              Recibirás 5Kg de Arroz Zulia, 2.5 Kg de azúcar El Palacio, 2 Kg de
+              harina Arepasan y 250gr de café para colar Aroma.
             </div>
             <div className={styles.item}>
-              Oferta válida del Válido del 23 de enero del 2023 al 28 de febrero
-              del 2023.
+              Válido del 1 de marzo del 2023 al 31 de marzo del 2023
             </div>
             <div className={styles.item}>
               Oferta válida para Norte de Santander.
