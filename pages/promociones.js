@@ -9,7 +9,7 @@ export default function Promociones() {
         <div className={styles.header}>
           <div className={styles.banner}>
             <Image
-              src='/optativos/bg-arroz-d.png'
+              src='/optativos/bg-arroz-2-d.png'
               alt='Colecciona los cupones de Qhubo'
               width={1110}
               height={300}
