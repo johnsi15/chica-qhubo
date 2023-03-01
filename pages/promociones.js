@@ -89,7 +89,7 @@ export default function Promociones() {
               harina Arepasan y 250gr de café para colar Aroma.
             </div>
             <div className={styles.item}>
-              Válido del 1 de marzo del 2023 al 31 de marzo del 2023
+              Válido del 1 de marzo del 2023 al 15 de abril del 2023
             </div>
             <div className={styles.item}>
               Oferta válida para Norte de Santander.
