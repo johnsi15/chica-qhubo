@@ -16,12 +16,7 @@ export default function Perfiles({ girls }) {
             <Link href='/chicaqhubo'>
               <a>
                 <div className={styles.logo}>
-                  <Image
-                    src='/logo-chica-qhubo.svg'
-                    alt='Chica Qhubo'
-                    width={247}
-                    height={135}
-                  />
+                  <Image src='/logo-chica-qhubo.svg' alt='Chica Qhubo' width={247} height={135} />
                 </div>
               </a>
             </Link>
@@ -46,12 +41,7 @@ export default function Perfiles({ girls }) {
               <div className={styles.patrocinio}>
                 <p>Espacio patrocinado por:</p>
                 <div className={styles.img_patrocinio}>
-                  <Image
-                    src='/logo-opitienda.png'
-                    alt='Opitienda'
-                    width={155}
-                    height={34}
-                  />
+                  <Image src='/logo-opitienda.png' alt='Opitienda' width={155} height={34} />
                 </div>
               </div>
             </div>
@@ -72,7 +62,7 @@ export async function getServerSideProps() {
 
   /* find all the data in our database */
   const result = await Profile.find({}).sort({ name: 1 })
-  const girls = result.map((doc) => {
+  const girls = result.map(doc => {
     const girl = doc.toObject()
     girl._id = girl._id.toString()
     return girl
